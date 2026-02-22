@@ -4,7 +4,7 @@ A retrieval-augmented generation (RAG) pipeline that enables semantic question a
 
 ## Demo
 
-![UI Screenshot](assets/ui_screenshot.png)
+![UI Screenshot](assets/gradio_ui.png)
 
 ---
 
