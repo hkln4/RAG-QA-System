@@ -3,3 +3,5 @@ venv/
 pdfs/
 faiss_index/
 __pycache__/
+mlruns/
+mlflow.db
