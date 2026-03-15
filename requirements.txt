@@ -67,6 +67,7 @@ huey==2.6.0
 huggingface_hub==1.4.1
 idna==3.11
 importlib_metadata==8.7.1
+iniconfig==2.3.0
 instructor==1.14.5
 itsdangerous==2.2.0
 Jinja2==3.1.6
@@ -112,6 +113,7 @@ ormsgpack==1.12.2
 packaging==24.2
 pandas==2.3.3
 pillow==12.1.1
+pluggy==1.6.0
 prettytable==3.17.0
 propcache==0.4.1
 proto-plus==1.27.1
@@ -127,6 +129,7 @@ pydub==0.25.1
 Pygments==2.19.2
 pyparsing==3.3.2
 pypdf==6.7.2
+pytest==9.0.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
 python-multipart==0.0.22
