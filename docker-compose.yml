@@ -8,9 +8,29 @@ services:
     volumes:
       - ./pdfs:/app/pdfs
       - ./faiss_index:/app/faiss_index
+      - ./mlruns:/app/mlruns
     restart: unless-stopped
+    depends_on:
+      - mlflow
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5001
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.19.0
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./mlruns:/mlruns
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5001
+      --backend-store-uri sqlite:///mlruns/mlflow.db
+      --default-artifact-root /mlruns
+      --no-serve-artifacts
+    restart: unless-stopped

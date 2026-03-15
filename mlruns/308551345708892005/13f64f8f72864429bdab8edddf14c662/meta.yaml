@@ -1,0 +1,14 @@
+artifact_uri: /Users/hkln4_/Desktop/rag-qa-system/mlruns/308551345708892005/13f64f8f72864429bdab8edddf14c662/artifacts
+end_time: 1773593415552
+entry_point_name: ''
+experiment_id: '308551345708892005'
+lifecycle_stage: active
+run_id: 13f64f8f72864429bdab8edddf14c662
+run_name: ingestion
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773593415530
+status: 3
+tags: []
+user_id: hkln4_

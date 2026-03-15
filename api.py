@@ -22,12 +22,18 @@ from rag_pipeline import (
     ask_question
 )
 
+from core.mlflow_tracker import setup_mlflow, log_query, log_ingestion
+
 load_dotenv()
 logger = get_logger(__name__)
+setup_mlflow()
 
 qa_chain = None
 retriever = None
 vector_store_loaded = False
+
+current_chunk_size = 1000
+current_chunk_overlap = 200
 
 
 @asynccontextmanager
@@ -62,6 +68,8 @@ async def health():
 @app.post("/ingest", response_model= IngestResponse)
 async def ingest(request: IngestRequest):
     global qa_chain, retriever, vector_store_loaded
+    current_chunk_size = request.chunk_size
+    current_chunk_overlap = request.chunk_overlap
 
     start_time = time.time()
 
@@ -92,6 +100,13 @@ async def ingest(request: IngestRequest):
         "processing_time_ms": processing_time
     }})
 
+    log_ingestion(
+        pages_loaded=len(documents),
+        chunks_created=len(chunks),
+        processing_time_ms=processing_time,
+        chunk_size=request.chunk_size,
+        chunk_overlap=request.chunk_overlap
+    )
     return IngestResponse(
         pages_loaded=len(documents),
         chunks_created=len(chunks),
@@ -129,6 +144,15 @@ async def query(request: QueryRequest):
     logger.info("Query processed.", extra={"extra": {
         "processing_time_ms": processing_time
     }})
+
+    log_query(
+        question=request.question,
+        answer=answer,
+        processing_time_ms=processing_time,
+        chunk_size=current_chunk_size,
+        chunk_overlap=current_chunk_overlap,
+        k=request.k
+    )
 
     return QueryResponse(
         answer=answer,
