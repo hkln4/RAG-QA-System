@@ -12,11 +12,11 @@ from rag_pipeline import (
 qa_chain = None
 retriever = None
 
+
 def process_pdfs(pdf_files):
     global qa_chain, retriever
 
     os.makedirs("pdfs", exist_ok=True)
-
     for pdf in pdf_files:
         shutil.copy(pdf.name, f"pdfs/{os.path.basename(pdf.name)}")
 
@@ -26,6 +26,7 @@ def process_pdfs(pdf_files):
     qa_chain, retriever = create_qa_chain(vector_store)
 
     return f"{len(documents)} pages, {len(chunks)} chunks processed. You can now ask questions."
+
 
 def answer_question(question):
     global qa_chain, retriever
@@ -42,32 +43,37 @@ def answer_question(question):
 
     return answer, source_text
 
-with gr.Blocks(title="RAG Document Q&A") as app:
-    gr.Markdown("# RAG-Based Document Q&A System")
-    gr.Markdown("Upload your PDFs and ask questions about their content.")
 
-    with gr.Row():
-        pdf_input = gr.File(
-            label="Upload PDFs",
-            file_types=[".pdf"],
-            file_count="multiple"
-        )
-        upload_btn = gr.Button("Process PDFs", variant="primary")
+def create_gradio_app():
+    with gr.Blocks(title="RAG Document Q&A") as demo:
+        gr.Markdown("# RAG-Based Document Q&A System")
+        gr.Markdown("Upload your PDFs and ask questions about their content.")
 
-    upload_status = gr.Textbox(label="Status", interactive=False)
+        with gr.Row():
+            pdf_input = gr.File(
+                label="Upload PDFs",
+                file_types=[".pdf"],
+                file_count="multiple"
+            )
+            upload_btn = gr.Button("Process PDFs", variant="primary")
 
-    with gr.Row():
-        question_input = gr.Textbox(
-            label="Your Question",
-            placeholder="Ask a question about the uploaded documents..."
-        )
-        ask_btn = gr.Button("Ask", variant="primary")
+        upload_status = gr.Textbox(label="Status", interactive=False)
 
-    answer_output = gr.Textbox(label="Answer", interactive=False)
-    sources_output = gr.Markdown(label="Sources")
+        with gr.Row():
+            question_input = gr.Textbox(
+                label="Your Question",
+                placeholder="Ask a question about the uploaded documents..."
+            )
+            ask_btn = gr.Button("Ask", variant="primary")
 
-    upload_btn.click(process_pdfs, inputs=[pdf_input], outputs=[upload_status])
-    ask_btn.click(answer_question, inputs=[question_input], outputs=[answer_output, sources_output])
+        answer_output = gr.Textbox(label="Answer", interactive=False)
+        sources_output = gr.Markdown(label="Sources")
+
+        upload_btn.click(process_pdfs, inputs=[pdf_input], outputs=[upload_status])
+        ask_btn.click(answer_question, inputs=[question_input], outputs=[answer_output, sources_output])
+
+    return demo
+
 
 if __name__ == "__main__":
-    app.launch()
+    create_gradio_app().launch()

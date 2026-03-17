@@ -3,6 +3,7 @@ import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from dotenv import load_dotenv
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from models.schemas import (
     QueryRequest,
@@ -22,18 +23,30 @@ from rag_pipeline import (
     ask_question
 )
 
+import gradio as gr
+from app import create_gradio_app
+
 from core.mlflow_tracker import setup_mlflow, log_query, log_ingestion
 
 load_dotenv()
+
+import signal
+import sys
+
+def signal_handler(sig, frame):
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 logger = get_logger(__name__)
-setup_mlflow()
+# setup_mlflow() connects mlflow via log_query, log_ingestion.
 
 qa_chain = None
 retriever = None
 vector_store_loaded = False
 
-current_chunk_size = 1000
-current_chunk_overlap = 200
+current_chunk_size = 1500
+current_chunk_overlap = 300
 
 
 @asynccontextmanager
@@ -57,6 +70,11 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan
 )
+
+Instrumentator().instrument(app).expose(app)
+
+gradio_app = create_gradio_app()
+gr.mount_gradio_app(app, gradio_app, path="/ui")
 
 @app.get("/health", response_model= HealthResponse)
 async def health():

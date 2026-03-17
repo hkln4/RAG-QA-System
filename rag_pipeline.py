@@ -55,18 +55,23 @@ def load_vector_store():
 
     return vector_store
 
-def create_qa_chain(vector_store):
+def create_qa_chain(vector_store, k: int = 7):
     llm = ChatGoogleGenerativeAI(
         model="models/gemini-3-pro-preview",
         google_api_key=GOOGLE_API_KEY,
         temperature=0.3
     )
 
-    retriever = vector_store.as_retriever(search_kwargs={"k": 5})
+    retriever = vector_store.as_retriever(search_kwargs={"k": k})
 
     prompt = ChatPromptTemplate.from_template("""
-    Answer the question using only the context below.
-    If the answer is not in the context, say "This information is not available in the document."
+    You are a precise question-answering assistant. Answer in the same language as the question.
+
+    Rules:
+    - Answer ONLY what is asked, nothing more
+    - Be concise and direct
+    - Use ONLY information from the context
+    - If not in context, say "This information is not available."
 
     Context: {context}
 
