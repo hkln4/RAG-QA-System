@@ -2,6 +2,8 @@
 venv/
 pdfs/
 faiss_index/
-__pycache__/
+*__pycache__/
+.DS_Store
 mlruns/
 mlflow.db
+.pytest_cache/
