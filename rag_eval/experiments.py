@@ -9,6 +9,7 @@ and judge scores. Every run is cached, so rerunning costs only new embeddings.
 import json
 import platform
 
+from rag_eval.cache import QuotaExhausted
 from rag_eval.metrics import paired_bootstrap_ci
 from rag_eval.run import RESULTS_DIR, Config, run
 
@@ -49,7 +50,7 @@ def compare(results):
     return rows
 
 
-def to_markdown(rows):
+def to_markdown(rows, pending):
     signed = lambda v: f"{v:+.3f}"
     ci = lambda r, m: "–" if r["name"] == "baseline" else f"{signed(r[f'delta_{m}'])} [{signed(r[f'ci_{m}'][0])}, {signed(r[f'ci_{m}'][1])}]"
     lines = [
@@ -69,18 +70,25 @@ def to_markdown(rows):
             f"| {r['variable']} | {r['value']} | {r['n_chunks']} | {r['hit@1']:.3f} | {r['hit@5']:.3f} | "
             f"{r['recall@5']:.3f} | {r['recall@10']:.3f} | {r['mrr']:.3f} | {ci(r, 'recall@5')} | {ci(r, 'mrr')} | "
             f"{r['identifier_hit@5']:.3f} | {r['paraphrased_hit@5']:.3f} |")
+    for variable, value, reason in pending:
+        lines.append(f"| {variable} | {value} | pending: {reason} |" + " |" * 9)
     return "\n".join(lines) + "\n"
 
 
 def main():
-    results = []
+    results, pending = [], []
     for variable, value, cfg in EXPERIMENTS:
         print(f"== {cfg.name}", flush=True)
-        results.append((variable, value, run(cfg, retrieval_only=cfg.name != "baseline")))
+        try:
+            results.append((variable, value, run(cfg, retrieval_only=cfg.name != "baseline")))
+        except QuotaExhausted as e:
+            # a free-tier daily quota ends one experiment, not the whole sweep; cache keeps its progress
+            print(f"   skipped: {e}", flush=True)
+            pending.append((variable, value, "daily API quota"))
     rows = compare(results)
-    (RESULTS_DIR / "experiments.json").write_text(json.dumps(rows, indent=2) + "\n")
-    (RESULTS_DIR / "experiments.md").write_text(to_markdown(rows))
-    print(to_markdown(rows))
+    (RESULTS_DIR / "experiments.json").write_text(json.dumps({"rows": rows, "pending": pending}, indent=2) + "\n")
+    (RESULTS_DIR / "experiments.md").write_text(to_markdown(rows, pending))
+    print(to_markdown(rows, pending))
 
 
 if __name__ == "__main__":
