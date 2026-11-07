@@ -141,7 +141,7 @@ builds the Docker image once tests pass.
 
 ## Tech stack
 
-LangChain, FAISS, Google Gemini (gemini-2.5-flash-lite and gemini-embedding-001), FastAPI, Gradio, Pydantic,
+LangChain, FAISS, Google Gemini (gemini-3-pro-preview for answers, gemini-embedding-001 for embeddings), FastAPI, Gradio, Pydantic,
 RAGAS, MLflow, Prometheus, Grafana, Docker and Docker Compose, GitHub Actions,
 pytest.
 
