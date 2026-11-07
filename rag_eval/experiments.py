@@ -11,7 +11,7 @@ import platform
 
 from rag_eval.cache import QuotaExhausted
 from rag_eval.metrics import paired_bootstrap_ci
-from rag_eval.run import RESULTS_DIR, Config, run
+from rag_eval.run import RESULTS_DIR, BudgetExceeded, Config, run
 
 RERANKER = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
@@ -26,6 +26,10 @@ EXPERIMENTS = [
     ("reranker", "MiniLM-L6 cross-encoder", Config(name="rerank", reranker=RERANKER)),
 ]
 PRIMARY = ("recall@5", "mrr")
+# Answers and RAGAS only for the baseline and the retrieval winner: the free tier
+# and the judge budget cannot cover every configuration, and each experiment varies
+# a retrieval component, which the retrieval metrics measure directly.
+FULL_RUNS = {"baseline", "hybrid"}
 
 
 def per_question(result, metric):
@@ -50,7 +54,23 @@ def compare(results):
     return rows
 
 
-def to_markdown(rows, pending):
+def generation_table(results):
+    lines = ["", "## Generation (baseline and retrieval winner)", "",
+             "| Config | Faithfulness | Answer relevancy | Unanswerable refused | Answerable refused |",
+             "|---|---|---|---|---|"]
+    for _, _, result in results:
+        g, rf = result["summary"]["generation"], result["summary"]["refusal"]
+        if g:
+            lines.append(f"| {result['config']['name']} | {g['faithfulness']:.3f} (n={g['faithfulness_n']}) | "
+                         f"{g['answer_relevancy']:.3f} (n={g['answer_relevancy_n']}) | "
+                         f"{rf['unanswerable_refused']:.3f} | {rf['answerable_refused']:.3f} |")
+    judge = next(r for _, _, r in results if r["judge_model"])
+    lines += ["", f"Judge `{judge['judge_model']}`, answer-relevancy embeddings `{judge['relevancy_embedding_model']}`, "
+                  f"answers `{judge['config']['answer_model']}` at temperature {judge['config']['temperature']}."]
+    return lines
+
+
+def to_markdown(rows, pending, results=()):
     signed = lambda v: f"{v:+.3f}"
     ci = lambda r, m: "–" if r["name"] == "baseline" else f"{signed(r[f'delta_{m}'])} [{signed(r[f'ci_{m}'][0])}, {signed(r[f'ci_{m}'][1])}]"
     lines = [
@@ -72,6 +92,8 @@ def to_markdown(rows, pending):
             f"{r['identifier_hit@5']:.3f} | {r['paraphrased_hit@5']:.3f} |")
     for variable, value, reason in pending:
         lines.append(f"| {variable} | {value} | pending: {reason} |" + " |" * 9)
+    if any(r["judge_model"] for _, _, r in results):
+        lines += generation_table(results)
     return "\n".join(lines) + "\n"
 
 
@@ -80,15 +102,15 @@ def main():
     for variable, value, cfg in EXPERIMENTS:
         print(f"== {cfg.name}", flush=True)
         try:
-            results.append((variable, value, run(cfg, retrieval_only=cfg.name != "baseline")))
-        except QuotaExhausted as e:
+            results.append((variable, value, run(cfg, retrieval_only=cfg.name not in FULL_RUNS)))
+        except (QuotaExhausted, BudgetExceeded) as e:
             # a free-tier daily quota ends one experiment, not the whole sweep; cache keeps its progress
             print(f"   skipped: {e}", flush=True)
-            pending.append((variable, value, "daily API quota"))
+            pending.append((variable, value, "API quota or judge budget"))
     rows = compare(results)
     (RESULTS_DIR / "experiments.json").write_text(json.dumps({"rows": rows, "pending": pending}, indent=2) + "\n")
-    (RESULTS_DIR / "experiments.md").write_text(to_markdown(rows, pending))
-    print(to_markdown(rows, pending))
+    (RESULTS_DIR / "experiments.md").write_text(to_markdown(rows, pending, results))
+    print(to_markdown(rows, pending, results))
 
 
 if __name__ == "__main__":
