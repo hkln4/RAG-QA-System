@@ -9,3 +9,4 @@ mlflow.db
 .pytest_cache/
 rag_eval/corpus/
 rag_eval/cache.sqlite
+rag_eval/infra/data/
