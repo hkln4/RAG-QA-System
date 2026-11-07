@@ -41,3 +41,13 @@ def test_score_retrieval_alternative_locations_count_once():
 def test_score_retrieval_nothing_relevant():
     s = score_retrieval([("z.pdf", 1, 0, 10)], [[SPAN]], ks=(1,))
     assert s == {"hit@1": 0.0, "recall@1": 0.0, "mrr": 0.0}
+
+
+def test_paired_bootstrap_ci_brackets_the_mean_and_is_reproducible():
+    from rag_eval.metrics import paired_bootstrap_ci
+
+    diffs = [1.0] * 10 + [0.0] * 30
+    low, high = paired_bootstrap_ci(diffs)
+    assert low < 0.25 < high
+    assert (low, high) == paired_bootstrap_ci(diffs)
+    assert paired_bootstrap_ci([0.0] * 20) == (0.0, 0.0)

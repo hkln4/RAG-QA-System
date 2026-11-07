@@ -2,6 +2,8 @@
 
 Chunks and evidence are both character spans on a page: (doc, page, start, end).
 """
+import random
+
 from rag_eval.labels import evidence_locations, locate
 
 # A chunk must contain at least this share of an evidence span to count as
@@ -50,3 +52,16 @@ def score_retrieval(ranked_chunks, spans, ks):
     first = next((rank for rank, items in enumerate(per_rank, 1) if items), None)
     scores["mrr"] = 1 / first if first else 0.0
     return scores
+
+
+def paired_bootstrap_ci(differences, n_resamples=10_000, seed=0, level=0.95):
+    """Confidence interval for the mean of per-question differences (config - baseline).
+
+    Resampling questions keeps each question's pair together, so the interval
+    reflects how much the comparison depends on which questions are in the set.
+    """
+    rng = random.Random(seed)
+    n = len(differences)
+    means = sorted(sum(rng.choices(differences, k=n)) / n for _ in range(n_resamples))
+    tail = (1 - level) / 2
+    return means[int(tail * n_resamples)], means[int((1 - tail) * n_resamples) - 1]
