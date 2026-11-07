@@ -51,3 +51,11 @@ def test_query_invalid_k():
         "k": -1
     })
     assert response.status_code == 422
+
+def test_query_retrieves_requested_k():
+    with patch("api.qa_chain", MagicMock()), patch("api.retriever", MagicMock()), \
+         patch("api.log_query"), \
+         patch("api.ask_question", return_value=("answer", [])) as ask:
+        response = client.post("/query", json={"question": "What is this?", "k": 12})
+    assert response.status_code == 200
+    assert ask.call_args.kwargs["k"] == 12

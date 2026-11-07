@@ -146,7 +146,7 @@ async def query(request: QueryRequest):
 
     logger.info("Processing query.", extra={"extra": {"question": request.question}})
 
-    answer, sources = ask_question(qa_chain, retriever, request.question)
+    answer, sources = ask_question(qa_chain, retriever, request.question, k=request.k)
 
     source_documents = [
         SourceDocument(
@@ -154,7 +154,7 @@ async def query(request: QueryRequest):
             page=doc.metadata.get("page", 0),
             content=doc.page_content[:200]
         )
-        for doc in sources[:request.k]
+        for doc in sources
     ]
 
     processing_time = (time.time() - start_time) * 1000

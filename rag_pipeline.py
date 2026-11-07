@@ -88,8 +88,9 @@ def create_qa_chain(vector_store, k: int = 7):
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
-def ask_question(chain, retriever, question):
-    sources = retriever.invoke(question)
+def ask_question(chain, retriever, question, k=None):
+    # k overrides the retriever's default search_kwargs for this call only
+    sources = retriever.invoke(question, k=k) if k else retriever.invoke(question)
     answer = chain.invoke({"context": format_docs(sources), "question": question})
 
     return answer, sources
