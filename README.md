@@ -59,7 +59,8 @@ The stack runs as four services via Docker Compose:
 
 1. PDFs are loaded and split into chunks with a recursive character splitter.
 2. Chunks are embedded with Gemini embeddings and stored in a FAISS index.
-3. A query retrieves the top-k chunks, which are passed to Gemini under a strict
+3. A query retrieves the top-k chunks by hybrid search (FAISS dense search fused
+   with BM25 by Reciprocal Rank Fusion), which are passed to Gemini under a strict
    context-grounded prompt.
 4. The answer is returned with its source documents and pages, and the run is
    logged to MLflow.
@@ -203,3 +204,7 @@ GOOGLE_API_KEY=your_api_key_here
 ```
 
 Get an API key from Google AI Studio.
+
+`RETRIEVAL_MODE` selects retrieval: `hybrid` (default, the winner of the
+[quality experiments](rag_eval/results/experiments.md)) or `dense` for FAISS
+only.

@@ -7,8 +7,13 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
+from core.retrieval import HybridRetriever
+
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+# "hybrid" (dense + BM25) was the quality-experiment winner; "dense" restores FAISS-only retrieval
+RETRIEVAL_MODE = os.getenv("RETRIEVAL_MODE", "hybrid")
 
 # shared with rag_eval so the evaluation measures the same model and prompt as the app
 EMBEDDING_MODEL = "models/gemini-embedding-001"
@@ -81,7 +86,12 @@ def create_qa_chain(vector_store, k: int = 7):
         temperature=0.3
     )
 
-    retriever = vector_store.as_retriever(search_kwargs={"k": k})
+    if RETRIEVAL_MODE == "hybrid":
+        retriever = HybridRetriever(vector_store=vector_store, k=k)
+    elif RETRIEVAL_MODE == "dense":
+        retriever = vector_store.as_retriever(search_kwargs={"k": k})
+    else:
+        raise ValueError(f"RETRIEVAL_MODE must be 'hybrid' or 'dense', got {RETRIEVAL_MODE!r}")
 
     prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
 
