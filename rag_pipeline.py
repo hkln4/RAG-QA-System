@@ -56,7 +56,7 @@ def load_vector_store():
 
 def create_qa_chain(vector_store, k: int = 7):
     llm = ChatGoogleGenerativeAI(
-        model="models/gemini-3-pro-preview",
+        model="models/gemini-3.1-flash-lite",
         google_api_key=GOOGLE_API_KEY,
         temperature=0.3
     )
