@@ -65,6 +65,7 @@ services:
       POSTGRES_PASSWORD: bench
       POSTGRES_DB: bench
     command: ["postgres", "-c", "shared_buffers=1GB"]  # room to keep table and index in memory
+    shm_size: 1gb  # parallel HNSW builds use shared memory; Docker's default 64 MB fails the build
     ports:
       - "5434:5432"
     volumes:
