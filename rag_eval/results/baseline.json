@@ -4,15 +4,24 @@
     "chunk_size": 1000,
     "chunk_overlap": 200,
     "embedding_model": "models/gemini-embedding-001",
+    "retrieval": "dense",
+    "reranker": null,
     "k": 5,
     "answer_model": "models/gemini-3.1-flash-lite",
     "temperature": 0.0
   },
-  "judge_model": "models/gemini-3.1-flash-lite",
-  "timestamp": "2026-11-07T16:42:55+00:00",
+  "retrieval_only": false,
+  "judge_model": "claude-haiku-5-5",
+  "relevancy_embedding_model": "BAAI/bge-base-en-v1.5",
+  "judge_spend_total": {
+    "input_tokens": 243943,
+    "output_tokens": 26520,
+    "usd": 0.0376543
+  },
+  "timestamp": "2026-11-07T17:31:57+00:00",
   "n_questions": 51,
   "n_chunks": 464,
-  "runtime_s": 4,
+  "runtime_s": 147,
   "environment": {
     "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
     "python": "3.13.1"
@@ -83,7 +92,7 @@
     "generation": {
       "faithfulness": 0.9552845528455284,
       "faithfulness_n": 41,
-      "answer_relevancy": 0.6673482670895847,
+      "answer_relevancy": 0.6040810337736778,
       "answer_relevancy_n": 46
     },
     "refusal": {
@@ -96,8 +105,6 @@
       "id": "q01",
       "type": "definition",
       "paraphrased": false,
-      "answer": "The AI RMF defines an AI system as an engineered or machine-based system that can, for a given set of objectives, generate outputs such as predictions, recommendations, or decisions influencing real or virtual environments, and is designed to operate with varying levels of autonomy.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -171,17 +178,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "The AI RMF defines an AI system as an engineered or machine-based system that can, for a given set of objectives, generate outputs such as predictions, recommendations, or decisions influencing real or virtual environments, and is designed to operate with varying levels of autonomy.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.884229995175046
+        "answer_relevancy": 0.9555002951675751
       }
     },
     {
       "id": "q02",
       "type": "list",
       "paraphrased": false,
-      "answer": "The four functions of the AI RMF Core are GOVERN, MAP, MEASURE, and MANAGE.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -255,17 +262,17 @@
         "recall@10": 1.0,
         "mrr": 0.25
       },
+      "answer": "The four functions of the AI RMF Core are GOVERN, MAP, MEASURE, and MANAGE.",
+      "refused": false,
       "ragas": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.925939613912933
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.9501745149550288
       }
     },
     {
       "id": "q03",
       "type": "fact",
       "paraphrased": false,
-      "answer": "The National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283).",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -339,17 +346,17 @@
         "recall@10": 1.0,
         "mrr": 0.25
       },
+      "answer": "The National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283).",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7226636464351506
+        "answer_relevancy": 0.6231992398392393
       }
     },
     {
       "id": "q04",
       "type": "definition",
       "paraphrased": true,
-      "answer": "Residual risk.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -423,17 +430,17 @@
         "recall@10": 1.0,
         "mrr": 0.16666666666666666
       },
+      "answer": "Residual risk.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7317479722704574
+        "answer_relevancy": 0.6857575384265354
       }
     },
     {
       "id": "q05",
       "type": "fact",
       "paraphrased": true,
-      "answer": "No, the AI RMF does not prescribe risk tolerance.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -507,17 +514,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "No, the AI RMF does not prescribe risk tolerance.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.797643447440883
+        "answer_relevancy": 0.6201362065702398
       }
     },
     {
       "id": "q06",
       "type": "fact",
       "paraphrased": true,
-      "answer": "Development and deployment should cease in a safe manner until risks can be sufficiently managed.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -591,17 +598,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Development and deployment should cease in a safe manner until risks can be sufficiently managed.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6777158097831136
+        "answer_relevancy": 0.6442498327974412
       }
     },
     {
       "id": "q07",
       "type": "fact",
       "paraphrased": false,
-      "answer": "Valid & Reliable.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -675,17 +682,17 @@
         "recall@10": 1.0,
         "mrr": 0.2
       },
+      "answer": "Valid & Reliable.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6185158519116628
+        "answer_relevancy": 0.49659903912454983
       }
     },
     {
       "id": "q08",
       "type": "definition",
       "paraphrased": false,
-      "answer": "Transparency answers \u201cwhat happened\u201d in the system, explainability answers \u201chow\u201d a decision was made, and interpretability answers \u201cwhy\u201d a decision was made and its meaning or context to the user.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -759,17 +766,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Transparency answers \u201cwhat happened\u201d in the system, explainability answers \u201chow\u201d a decision was made, and interpretability answers \u201cwhy\u201d a decision was made and its meaning or context to the user.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8068897575407252
+        "answer_relevancy": 0.8636143183899602
       }
     },
     {
       "id": "q09",
       "type": "list",
       "paraphrased": true,
-      "answer": "NIST sorts the sources of AI bias into three major categories: systemic, computational and statistical, and human-cognitive.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -843,17 +850,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "NIST sorts the sources of AI bias into three major categories: systemic, computational and statistical, and human-cognitive.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8434225712445679
+        "answer_relevancy": 0.8621291393462088
       }
     },
     {
       "id": "q10",
       "type": "definition",
       "paraphrased": true,
-      "answer": "Resilience is the ability to return to normal function after an unexpected adverse event, while security includes resilience but also encompasses protocols to avoid, protect against, respond to, or recover from attacks.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -927,17 +934,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Resilience is the ability to return to normal function after an unexpected adverse event, while security includes resilience but also encompasses protocols to avoid, protect against, respond to, or recover from attacks.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7001032223572464
+        "answer_relevancy": 0.559945984679131
       }
     },
     {
       "id": "q11",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "Processes and procedures are in place for decommissioning and phasing out AI systems safely and in a manner that does not increase risks or decrease the organization\u2019s trustworthiness.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -1011,17 +1018,17 @@
         "recall@10": 1.0,
         "mrr": 0.3333333333333333
       },
+      "answer": "Processes and procedures are in place for decommissioning and phasing out AI systems safely and in a manner that does not increase risks or decrease the organization\u2019s trustworthiness.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6785719157779825
+        "answer_relevancy": 0.4575256363169662
       }
     },
     {
       "id": "q12",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "MEASURE 2.12 covers the assessment and documentation of the environmental impact and sustainability of AI model training and management activities.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -1095,17 +1102,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "MEASURE 2.12 covers the assessment and documentation of the environmental impact and sustainability of AI model training and management activities.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7812276119782618
+        "answer_relevancy": 0.764377819331859
       }
     },
     {
       "id": "q13",
       "type": "list",
       "paraphrased": false,
-      "answer": "Mitigating, transferring, avoiding, or accepting.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -1179,17 +1186,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Mitigating, transferring, avoiding, or accepting.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.675208281702012
+        "answer_relevancy": 0.49626966794281274
       }
     },
     {
       "id": "q14",
       "type": "definition",
       "paraphrased": false,
-      "answer": "Negative residual risks are defined as the sum of all unmitigated risks.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -1263,17 +1270,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Negative residual risks are defined as the sum of all unmitigated risks.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8595320688758226
+        "answer_relevancy": 0.8020946839194939
       }
     },
     {
       "id": "q15",
       "type": "definition",
       "paraphrased": false,
-      "answer": "An AI RMF Current Profile indicates how AI is currently being managed and the related risks in terms of current outcomes, while a Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -1347,17 +1354,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "An AI RMF Current Profile indicates how AI is currently being managed and the related risks in terms of current outcomes, while a Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.914303331711721
+        "answer_relevancy": 0.942702037944608
       }
     },
     {
       "id": "q16",
       "type": "fact",
       "paraphrased": true,
-      "answer": "Most users of the AI RMF would start with the MAP function.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -1431,17 +1438,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Most users of the AI RMF would start with the MAP function.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7088014536860987
+        "answer_relevancy": 0.5528288428509397
       }
     },
     {
       "id": "q17",
       "type": "fact",
       "paraphrased": false,
-      "answer": "Some commenters object to these terms because they anthropomorphize GAI, which is a risk as it can inappropriately attribute human characteristics to non-human entities.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -1515,17 +1522,17 @@
         "recall@10": 1.0,
         "mrr": 0.5
       },
+      "answer": "Some commenters object to these terms because they anthropomorphize GAI, which is a risk as it can inappropriately attribute human characteristics to non-human entities.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7950837043395524
+        "answer_relevancy": 0.7544283194880341
       }
     },
     {
       "id": "q18",
       "type": "list",
       "paraphrased": false,
-      "answer": "The risk is exacerbated for GAI due to the scale of the training data, which may be too large for humans to vet; the difficulty of training foundation models, which leads to extensive reuse of limited numbers of models; and the extent to which GAI may be integrated into other devices and services.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -1599,17 +1606,17 @@
         "recall@10": 1.0,
         "mrr": 0.5
       },
+      "answer": "The risk is exacerbated for GAI due to the scale of the training data, which may be too large for humans to vet; the difficulty of training foundation models, which leads to extensive reuse of limited numbers of models; and the extent to which GAI may be integrated into other devices and services.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7533275553488364
+        "answer_relevancy": 0.6607358306068255
       }
     },
     {
       "id": "q19",
       "type": "fact",
       "paraphrased": true,
-      "answer": "Training a single transformer LLM can emit as much carbon as 300 round-trip flights between San Francisco and New York.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -1683,17 +1690,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Training a single transformer LLM can emit as much carbon as 300 round-trip flights between San Francisco and New York.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.77354881111039
+        "answer_relevancy": 0.5236187652605513
       }
     },
     {
       "id": "q20",
       "type": "definition",
       "paraphrased": true,
-      "answer": "Model collapse can occur, which can lead to homogenized outputs and the disappearance of data points from the distribution of the new model\u2019s outputs.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -1767,17 +1774,17 @@
         "recall@10": 1.0,
         "mrr": 0.3333333333333333
       },
+      "answer": "Model collapse can occur, which can lead to homogenized outputs and the disappearance of data points from the distribution of the new model\u2019s outputs.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6921320370230771
+        "answer_relevancy": 0.7867640314273601
       }
     },
     {
       "id": "q21",
       "type": "definition",
       "paraphrased": true,
-      "answer": "Automation bias.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -1851,17 +1858,17 @@
         "recall@10": 1.0,
         "mrr": 0.5
       },
+      "answer": "Automation bias.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7920336746716207
+        "answer_relevancy": 0.7638473005997014
       }
     },
     {
       "id": "q22",
       "type": "definition",
       "paraphrased": false,
-      "answer": "Direct prompt injection involves attackers crafting malicious prompts and inputting them directly into a GAI system. Indirect prompt injection occurs when adversaries remotely exploit LLM-integrated applications by injecting prompts into data likely to be retrieved, without using a direct interface.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -1935,17 +1942,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Direct prompt injection involves attackers crafting malicious prompts and inputting them directly into a GAI system. Indirect prompt injection occurs when adversaries remotely exploit LLM-integrated applications by injecting prompts into data likely to be retrieved, without using a direct interface.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.9234405884901774
+        "answer_relevancy": 0.7762333988083022
       }
     },
     {
       "id": "q23",
       "type": "fact",
       "paraphrased": true,
-      "answer": "A synthetic image of a Pentagon blast.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2019,17 +2026,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "A synthetic image of a Pentagon blast.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7545313689172469
+        "answer_relevancy": 0.43442449008310174
       }
     },
     {
       "id": "q24",
       "type": "definition",
       "paraphrased": true,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2103,8 +2110,10 @@
         "recall@10": 0.0,
         "mrr": 0.0
       },
+      "answer": "This information is not available.",
+      "refused": true,
       "ragas": {
-        "faithfulness": 1.0,
+        "faithfulness": 0.0,
         "answer_relevancy": 0.0
       }
     },
@@ -2112,8 +2121,6 @@
       "id": "q25",
       "type": "fact",
       "paraphrased": false,
-      "answer": "Executive Order 14110.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2187,17 +2194,17 @@
         "recall@10": 1.0,
         "mrr": 0.5
       },
+      "answer": "Executive Order 14110.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7655826138282379
+        "answer_relevancy": 0.6905658914861769
       }
     },
     {
       "id": "q26",
       "type": "fact",
       "paraphrased": false,
-      "answer": "At least tens of billions of parameters.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2271,17 +2278,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "At least tens of billions of parameters.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7198934292059898
+        "answer_relevancy": 0.5836061175498006
       }
     },
     {
       "id": "q27",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2355,6 +2362,8 @@
         "recall@10": 0.0,
         "mrr": 0.0
       },
+      "answer": "This information is not available.",
+      "refused": true,
       "ragas": {
         "faithfulness": 1.0,
         "answer_relevancy": 0.0
@@ -2364,8 +2373,6 @@
       "id": "q28",
       "type": "list",
       "paraphrased": false,
-      "answer": "System ID, Title, Reporter, System/Source, Data Reported, and Date of Incident.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2439,17 +2446,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "System ID, Title, Reporter, System/Source, Data Reported, and Date of Incident.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6922783949194914
+        "answer_relevancy": 0.6135022503207834
       }
     },
     {
       "id": "q29",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2523,8 +2530,10 @@
         "recall@10": 1.0,
         "mrr": 0.1
       },
+      "answer": "This information is not available.",
+      "refused": true,
       "ragas": {
-        "faithfulness": 1.0,
+        "faithfulness": 0.0,
         "answer_relevancy": 0.0
       }
     },
@@ -2532,8 +2541,6 @@
       "id": "q30",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "GV-6.1-006",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2607,17 +2614,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "GV-6.1-006",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.5963953365789956
+        "answer_relevancy": 0.5079583123670524
       }
     },
     {
       "id": "q31",
       "type": "list",
       "paraphrased": false,
-      "answer": "The Generative AI Profile mentions the following standard risk controls for third-party transparency: acquisition and procurement due diligence, requests for software bills of materials (SBOMs), application of service level agreements (SLAs), and statement on standards for attestation engagement (SSAE) reports.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2691,17 +2698,17 @@
         "recall@10": 1.0,
         "mrr": 0.5
       },
+      "answer": "The Generative AI Profile mentions the following standard risk controls for third-party transparency: acquisition and procurement due diligence, requests for software bills of materials (SBOMs), application of service level agreements (SLAs), and statement on standards for attestation engagement (SSAE) reports.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8720827782873822
+        "answer_relevancy": 0.8630190804931294
       }
     },
     {
       "id": "q32",
       "type": "fact",
       "paraphrased": true,
-      "answer": "Because anecdotal testing through standardized tests designed for humans does not guarantee a GAI system's validity or reliability in those domains.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -2775,17 +2782,17 @@
         "recall@10": 1.0,
         "mrr": 0.25
       },
+      "answer": "Because anecdotal testing through standardized tests designed for humans does not guarantee a GAI system's validity or reliability in those domains.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7582984796324667
+        "answer_relevancy": 0.6442539613726667
       }
     },
     {
       "id": "q33",
       "type": "list",
       "paraphrased": false,
-      "answer": "The six Functions of the NIST CSF 2.0 Core are GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -2859,17 +2866,17 @@
         "recall@10": 1.0,
         "mrr": 0.2
       },
+      "answer": "The six Functions of the NIST CSF 2.0 Core are GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8437761681377101
+        "answer_relevancy": 0.9500274942722212
       }
     },
     {
       "id": "q34",
       "type": "fact",
       "paraphrased": false,
-      "answer": "Tier 4 (Adaptive).",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -2943,17 +2950,17 @@
         "recall@10": 1.0,
         "mrr": 0.3333333333333333
       },
+      "answer": "Tier 4 (Adaptive).",
+      "refused": false,
       "ragas": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.6286242367736413
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5117896018476266
       }
     },
     {
       "id": "q35",
       "type": "fact",
       "paraphrased": true,
-      "answer": "In an ad hoc manner.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3027,6 +3034,8 @@
         "recall@10": 1.0,
         "mrr": 0.2
       },
+      "answer": "In an ad hoc manner.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
         "answer_relevancy": 0.0
@@ -3036,8 +3045,6 @@
       "id": "q36",
       "type": "definition",
       "paraphrased": false,
-      "answer": "A Community Profile is a baseline of CSF outcomes that is created and published to address shared interests and goals among a number of organizations.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3111,17 +3118,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "A Community Profile is a baseline of CSF outcomes that is created and published to address shared interests and goals among a number of organizations.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8188238024499782
+        "answer_relevancy": 0.7271950677079214
       }
     },
     {
       "id": "q37",
       "type": "list",
       "paraphrased": false,
-      "answer": "1. Scope the Organizational Profile.\n2. Gather the information needed to prepare the Organizational Profile.\n3. Create the Organizational Profile.\n4. Analyze the gaps between the Current and Target Profiles, and create an action plan.\n5. Implement the action plan, and update the Organizational Profile.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3195,17 +3202,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "1. Scope the Organizational Profile.\n2. Gather the information needed to prepare the Organizational Profile.\n3. Create the Organizational Profile.\n4. Analyze the gaps between the Current and Target Profiles, and create an action plan.\n5. Implement the action plan, and update the Organizational Profile.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7928847734033132
+        "answer_relevancy": 0.8032444301383794
       }
     },
     {
       "id": "q38",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "Suppliers are known and prioritized by criticality.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3279,17 +3286,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "Suppliers are known and prioritized by criticality.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6350558835498136
+        "answer_relevancy": 0.3592081321244222
       }
     },
     {
       "id": "q39",
       "type": "identifier",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3363,6 +3370,8 @@
         "recall@10": 1.0,
         "mrr": 0.1111111111111111
       },
+      "answer": "This information is not available.",
+      "refused": true,
       "ragas": {
         "faithfulness": 0.0,
         "answer_relevancy": 0.0
@@ -3372,8 +3381,6 @@
       "id": "q40",
       "type": "fact",
       "paraphrased": true,
-      "answer": "GOVERN is in the center of the wheel because it informs how an organization will implement the other five Functions.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3447,17 +3454,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "GOVERN is in the center of the wheel because it informs how an organization will implement the other five Functions.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.7809712734491204
+        "answer_relevancy": 0.7064336954579405
       }
     },
     {
       "id": "q41",
       "type": "fact",
       "paraphrased": false,
-      "answer": "RESPOND and RECOVER.",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3531,17 +3538,17 @@
         "recall@10": 1.0,
         "mrr": 0.2
       },
+      "answer": "RESPOND and RECOVER.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.6461763864417205
+        "answer_relevancy": 0.5203778004449262
       }
     },
     {
       "id": "q42",
       "type": "multi-hop",
       "paraphrased": false,
-      "answer": "The AI RMF has four core functions, and CSF 2.0 has six core functions. They share the function name \"Govern.\"",
-      "refused": false,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3615,17 +3622,17 @@
         "recall@10": 0.5,
         "mrr": 0.25
       },
+      "answer": "The AI RMF has four core functions, and CSF 2.0 has six core functions. They share the function name \"Govern.\"",
+      "refused": false,
       "ragas": {
         "faithfulness": 0.6666666666666666,
-        "answer_relevancy": 0.9027342746893842
+        "answer_relevancy": 0.9348512126825198
       }
     },
     {
       "id": "q43",
       "type": "fact",
       "paraphrased": false,
-      "answer": "The NIST Cybersecurity Framework, the NIST Privacy Framework, the NIST Risk Management Framework, and the Secure Software Development Framework.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -3699,17 +3706,17 @@
         "recall@10": 0.0,
         "mrr": 0.0
       },
+      "answer": "The NIST Cybersecurity Framework, the NIST Privacy Framework, the NIST Risk Management Framework, and the Secure Software Development Framework.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.744364816865888
+        "answer_relevancy": 0.7267816322278903
       }
     },
     {
       "id": "q44",
       "type": "unanswerable",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3771,14 +3778,14 @@
           736,
           1696
         ]
-      ]
+      ],
+      "answer": "This information is not available.",
+      "refused": true
     },
     {
       "id": "q45",
       "type": "unanswerable",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -3840,14 +3847,14 @@
           0,
           914
         ]
-      ]
+      ],
+      "answer": "This information is not available.",
+      "refused": true
     },
     {
       "id": "q46",
       "type": "unanswerable",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -3909,14 +3916,14 @@
           0,
           899
         ]
-      ]
+      ],
+      "answer": "This information is not available.",
+      "refused": true
     },
     {
       "id": "q47",
       "type": "unanswerable",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -3978,14 +3985,14 @@
           0,
           964
         ]
-      ]
+      ],
+      "answer": "This information is not available.",
+      "refused": true
     },
     {
       "id": "q48",
       "type": "unanswerable",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_csf_2.pdf",
@@ -4047,14 +4054,14 @@
           1562,
           2554
         ]
-      ]
+      ],
+      "answer": "This information is not available.",
+      "refused": true
     },
     {
       "id": "q49",
       "type": "multi-hop",
       "paraphrased": false,
-      "answer": "The Generative AI Profile is a profile of the AI Risk Management Framework (AI RMF 1.0), and the framework calls it a cross-sectoral profile.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -4128,17 +4135,17 @@
         "recall@10": 1.0,
         "mrr": 0.14285714285714285
       },
+      "answer": "The Generative AI Profile is a profile of the AI Risk Management Framework (AI RMF 1.0), and the framework calls it a cross-sectoral profile.",
+      "refused": false,
       "ragas": {
         "faithfulness": 0.5,
-        "answer_relevancy": 0.8002127298219325
+        "answer_relevancy": 0.7774857745021561
       }
     },
     {
       "id": "q50",
       "type": "multi-hop",
       "paraphrased": false,
-      "answer": "In the AI RMF, a Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals. In the CSF 2.0, a Target Profile specifies the desired outcomes that an organization has selected and prioritized for achieving its cybersecurity risk management objectives.",
-      "refused": false,
       "retrieved": [
         [
           "nist_ai_rmf.pdf",
@@ -4212,17 +4219,17 @@
         "recall@10": 1.0,
         "mrr": 1.0
       },
+      "answer": "In the AI RMF, a Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals. In the CSF 2.0, a Target Profile specifies the desired outcomes that an organization has selected and prioritized for achieving its cybersecurity risk management objectives.",
+      "refused": false,
       "ragas": {
         "faithfulness": 1.0,
-        "answer_relevancy": 0.8892506163812456
+        "answer_relevancy": 0.8902701647170983
       }
     },
     {
       "id": "q51",
       "type": "multi-hop",
       "paraphrased": false,
-      "answer": "This information is not available.",
-      "refused": true,
       "retrieved": [
         [
           "nist_ai_600_1.pdf",
@@ -4296,6 +4303,8 @@
         "recall@10": 0.5,
         "mrr": 1.0
       },
+      "answer": "This information is not available.",
+      "refused": true,
       "ragas": {
         "faithfulness": 0.0,
         "answer_relevancy": 0.0

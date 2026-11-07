@@ -1,6 +1,6 @@
 # RAG eval: baseline
 
-2026-11-07T16:42:55+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `models/gemini-embedding-001` · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `models/gemini-3.1-flash-lite`
+2026-11-07T17:31:57+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `models/gemini-embedding-001` · retrieval dense · reranker None · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `claude-haiku-5-5`
 
 ## Retrieval
 
@@ -16,4 +16,4 @@
 
 | Faithfulness | Answer relevancy | Unanswerable refused | Answerable refused |
 |---|---|---|---|
-| 0.955 (n=41) | 0.667 (n=46) | 1.000 | 0.109 |
+| 0.955 (n=41) | 0.604 (n=46) | 1.000 | 0.109 |
