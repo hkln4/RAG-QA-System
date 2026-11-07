@@ -55,5 +55,36 @@ services:
       - prometheus
     restart: unless-stopped
 
+  # Vector-DB benchmark only (rag_eval/infra); not started by a plain `docker compose up`.
+  #   docker compose --profile bench up -d
+  # Both get the same CPU and memory limits so the comparison is between engines.
+  bench-pgvector:
+    image: pgvector/pgvector:0.8.6-pg17
+    profiles: ["bench"]
+    environment:
+      POSTGRES_PASSWORD: bench
+      POSTGRES_DB: bench
+    command: ["postgres", "-c", "shared_buffers=1GB"]  # room to keep table and index in memory
+    ports:
+      - "5434:5432"
+    volumes:
+      - bench_pgdata:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits: {cpus: "4", memory: 4g}
+
+  bench-qdrant:
+    image: qdrant/qdrant:v1.20.0
+    profiles: ["bench"]
+    ports:
+      - "6333:6333"
+    volumes:
+      - bench_qdrant:/qdrant/storage
+    deploy:
+      resources:
+        limits: {cpus: "4", memory: 4g}
+
 volumes:
   grafana_data:
+  bench_pgdata:
+  bench_qdrant:
