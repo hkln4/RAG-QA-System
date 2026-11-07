@@ -13,4 +13,4 @@ tests/
 assets/
 *.md
 docker-compose.yml
-evaluation.py
+rag_eval/
