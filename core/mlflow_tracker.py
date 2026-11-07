@@ -1,6 +1,12 @@
 import os
 import mlflow
 
+# Tracking is best-effort: with MLflow's defaults (7 retries, exponential backoff,
+# 120 s timeout) an unreachable server blocks each /query for minutes.
+# setdefault keeps these overridable from the environment.
+os.environ.setdefault("MLFLOW_HTTP_REQUEST_MAX_RETRIES", "0")
+os.environ.setdefault("MLFLOW_HTTP_REQUEST_TIMEOUT", "5")
+
 EXPERIMENT_NAME = "RAG Pipeline Evaluation"
 _mlflow_initialized = False
 
