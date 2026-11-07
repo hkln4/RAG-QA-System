@@ -3,6 +3,7 @@
     python rag_eval/download_corpus.py      # once
     python -m rag_eval.run                  # baseline: the app's current defaults
     python -m rag_eval.run --name chunk_500 --chunk-size 500 --chunk-overlap 100
+    python -m rag_eval.experiments          # every quality experiment, one comparison table
 
 Retrieval metrics (hit@k, recall@k, MRR) cover the answerable questions;
 RAGAS faithfulness and answer relevancy score the generated answers with a
@@ -30,6 +31,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmb
 from rag_eval.cache import Cache, with_retry
 from rag_eval.labels import CORPUS_DIR, load_questions
 from rag_eval.metrics import evidence_spans, score_retrieval
+from rag_eval.retrievers import BM25, LocalEmbeddings, Reranker, reciprocal_rank_fusion
 from rag_pipeline import (
     ANSWER_MODEL,
     EMBEDDING_MODEL,
@@ -45,6 +47,7 @@ from rag_pipeline import (
 # It grades its own answers; README lists this as a limitation.
 JUDGE_MODEL = ANSWER_MODEL
 KS = (1, 3, 5, 10)
+CANDIDATES = 20  # per-list depth for hybrid fusion and the reranker's candidate pool
 REFUSAL = "this information is not available"
 RESULTS_DIR = Path(__file__).parent / "results"
 
@@ -54,7 +57,9 @@ class Config:
     name: str = "baseline"
     chunk_size: int = 1000
     chunk_overlap: int = 200
-    embedding_model: str = EMBEDDING_MODEL
+    embedding_model: str = EMBEDDING_MODEL  # "models/..." is Gemini; anything else is sentence-transformers
+    retrieval: str = "dense"  # "dense" or "hybrid" (dense + BM25, fused with RRF)
+    reranker: str | None = None  # cross-encoder that reorders the top CANDIDATES dense chunks
     k: int = 5  # chunks passed to the LLM; /query's default
     answer_model: str = ANSWER_MODEL
     # The app answers at 0.3; experiments use 0 so differences between
@@ -84,6 +89,12 @@ def embed(texts, kind, model, embeddings, cache):
     if missing:
         print(f"  embedded {len(missing)} {kind}s ({len(texts) - len(missing)} cached)")
     return vectors
+
+
+def make_embeddings(model):
+    if model.startswith("models/"):
+        return GoogleGenerativeAIEmbeddings(model=model, google_api_key=GOOGLE_API_KEY)
+    return LocalEmbeddings(model)
 
 
 def make_judge():
@@ -128,7 +139,7 @@ def mean(values):
     return sum(values) / len(values) if values else None
 
 
-def summarize(rows):
+def summarize(rows, retrieval_only=False):
     answerable = [r for r in rows if r["type"] != "unanswerable"]
     groups = {
         "all": answerable,
@@ -141,6 +152,8 @@ def summarize(rows):
     summary = {"retrieval": {}, "generation": {}, "refusal": {}}
     for name, group in groups.items():
         summary["retrieval"][name] = {"n": len(group), **{k: mean([r["retrieval"][k] for r in group]) for k in retrieval_keys}}
+    if retrieval_only:
+        return summary
     # Faithfulness skips refusals: "not available" makes no claim to check, and the
     # judge scored identical refusals 1.0 and 0.0. Refusals are measured below.
     # Answer relevancy keeps them, since not answering is a real relevancy failure.
@@ -163,7 +176,8 @@ def to_markdown(result):
         "",
         f"{result['timestamp']} · {result['n_questions']} questions · {result['n_chunks']} chunks · "
         f"chunk {cfg['chunk_size']}/{cfg['chunk_overlap']} · k={cfg['k']} · "
-        f"embeddings `{cfg['embedding_model']}` · answers `{cfg['answer_model']}` (T={cfg['temperature']}) · "
+        f"embeddings `{cfg['embedding_model']}` · retrieval {cfg['retrieval']} · reranker {cfg['reranker']} · "
+        f"answers `{cfg['answer_model']}` (T={cfg['temperature']}) · "
         f"judge `{result['judge_model']}`",
         "",
         "## Retrieval",
@@ -175,6 +189,8 @@ def to_markdown(result):
         lines.append(f"| {name} | {m['n']} | {fmt(m['hit@1'])} | {fmt(m['hit@5'])} | {fmt(m['recall@5'])} | "
                      f"{fmt(m['recall@10'])} | {fmt(m['mrr'])} |")
     g, rf = s["generation"], s["refusal"]
+    if not g:
+        return "\n".join(lines + ["", "Retrieval only: no answers generated.", ""])
     lines += [
         "",
         "## Generation",
@@ -212,7 +228,7 @@ def log_to_mlflow(result):
         print(f"MLflow logging skipped: {str(e)[:120]}")
 
 
-def run(cfg):
+def run(cfg, retrieval_only=False):
     started = time.time()
     cache = Cache()
     questions = load_questions()
@@ -220,51 +236,65 @@ def run(cfg):
     documents = load_pdfs(str(CORPUS_DIR) + "/")
     pages = {(Path(d.metadata["source"]).name, d.metadata["page"] + 1): d.page_content for d in documents}
     chunks = split_documents(documents, chunk_size=cfg.chunk_size, chunk_overlap=cfg.chunk_overlap)
-
-    embeddings = GoogleGenerativeAIEmbeddings(model=cfg.embedding_model, google_api_key=GOOGLE_API_KEY)
     texts = [c.page_content for c in chunks]
-    vectors = embed(texts, "document", cfg.embedding_model, embeddings, cache)
-    store = FAISS.from_embeddings(list(zip(texts, vectors)), embeddings, metadatas=[c.metadata for c in chunks])
-    query_vectors = embed([q["question"] for q in questions], "query", cfg.embedding_model, embeddings, cache)
 
-    chain = (ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
-             | ChatGoogleGenerativeAI(model=cfg.answer_model, google_api_key=GOOGLE_API_KEY,
-                                      temperature=cfg.temperature, max_retries=0)
-             | StrOutputParser())
-    judge = make_judge()
+    embeddings = make_embeddings(cfg.embedding_model)
+    vectors = embed(texts, "document", cfg.embedding_model, embeddings, cache)
+    metadatas = [{**c.metadata, "chunk_id": i} for i, c in enumerate(chunks)]
+    store = FAISS.from_embeddings(list(zip(texts, vectors)), embeddings, metadatas=metadatas)
+    query_vectors = embed([q["question"] for q in questions], "query", cfg.embedding_model, embeddings, cache)
+    bm25 = BM25(texts) if cfg.retrieval == "hybrid" else None
+    reranker = Reranker(cfg.reranker) if cfg.reranker else None
+
+    def retrieve(question, qvec):
+        """Top max(KS) chunk ids; dense alone is the baseline, the others add one step each."""
+        depth = CANDIDATES if (bm25 or reranker) else max(KS)
+        ranked = [d.metadata["chunk_id"] for d, _ in store.similarity_search_with_score_by_vector(qvec, k=depth)]
+        if bm25:
+            ranked = reciprocal_rank_fusion([ranked, bm25.rank(question, depth)], n=depth)
+        if reranker:
+            ranked = reranker.rerank(question, ranked, texts)
+        return ranked[:max(KS)]
+
+    if not retrieval_only:
+        chain = (ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
+                 | ChatGoogleGenerativeAI(model=cfg.answer_model, google_api_key=GOOGLE_API_KEY,
+                                          temperature=cfg.temperature, max_retries=0)
+                 | StrOutputParser())
+        judge = make_judge()
 
     rows = []
     for i, (q, qvec) in enumerate(zip(questions, query_vectors), 1):
-        ranked = [doc for doc, _ in store.similarity_search_with_score_by_vector(qvec, k=max(KS))]
-        context_docs = ranked[:cfg.k]
-        inputs = {"context": format_docs(context_docs), "question": q["question"]}
-        key = Cache.key("answer", cfg.answer_model, cfg.temperature, PROMPT_TEMPLATE, inputs)
-        answer = cache.get(key)
-        if answer is None:
-            answer = with_retry(chain.invoke, inputs)
-            cache.set(key, answer)
-
-        row = {
-            "id": q["id"], "type": q["type"], "paraphrased": q.get("paraphrased", False),
-            "answer": answer, "refused": REFUSAL in answer.lower(),
-            "retrieved": [list(chunk_ref(d)) for d in ranked],
-        }
+        ranked = [chunks[j] for j in retrieve(q["question"], qvec)]
+        row = {"id": q["id"], "type": q["type"], "paraphrased": q.get("paraphrased", False),
+               "retrieved": [list(chunk_ref(d)) for d in ranked]}
         if q["type"] != "unanswerable":
             row["retrieval"] = score_retrieval([chunk_ref(d) for d in ranked], evidence_spans(q, pages), KS)
-            row["ragas"] = ragas_scores(q["question"], answer, [d.page_content for d in context_docs], judge, cache)
+        if not retrieval_only:
+            context_docs = ranked[:cfg.k]
+            inputs = {"context": format_docs(context_docs), "question": q["question"]}
+            key = Cache.key("answer", cfg.answer_model, cfg.temperature, PROMPT_TEMPLATE, inputs)
+            answer = cache.get(key)
+            if answer is None:
+                answer = with_retry(chain.invoke, inputs)
+                cache.set(key, answer)
+            row["answer"], row["refused"] = answer, REFUSAL in answer.lower()
+            if q["type"] != "unanswerable":
+                row["ragas"] = ragas_scores(q["question"], answer, [d.page_content for d in context_docs], judge, cache)
+            print(f"[{i}/{len(questions)}] {q['id']} {json.dumps(row.get('retrieval', {}).get('hit@5'))} "
+                  f"{json.dumps(row.get('ragas'))} refused={row['refused']}", flush=True)
         rows.append(row)
-        print(f"[{i}/{len(questions)}] {q['id']} {json.dumps(row.get('retrieval', {}).get('hit@5'))} "
-              f"{json.dumps(row.get('ragas'))} refused={row['refused']}", flush=True)
 
     result = {
         "config": asdict(cfg),
-        "judge_model": JUDGE_MODEL,
+        "retrieval_only": retrieval_only,
+        "judge_model": None if retrieval_only else JUDGE_MODEL,
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "n_questions": len(questions),
         "n_chunks": len(chunks),
         "runtime_s": round(time.time() - started),
         "environment": {"platform": platform.platform(), "python": platform.python_version()},
-        "summary": summarize(rows),
+        "summary": summarize(rows, retrieval_only),
         "questions": rows,
     }
     RESULTS_DIR.mkdir(exist_ok=True)
@@ -281,10 +311,17 @@ def parse_args():
     p.add_argument("--name", default=defaults.name)
     p.add_argument("--chunk-size", type=int, default=defaults.chunk_size)
     p.add_argument("--chunk-overlap", type=int, default=defaults.chunk_overlap)
+    p.add_argument("--embedding-model", default=defaults.embedding_model)
+    p.add_argument("--retrieval", choices=("dense", "hybrid"), default=defaults.retrieval)
+    p.add_argument("--reranker", default=defaults.reranker)
     p.add_argument("--k", type=int, default=defaults.k)
+    p.add_argument("--retrieval-only", action="store_true", help="skip answers and RAGAS (no LLM calls)")
     a = p.parse_args()
-    return Config(name=a.name, chunk_size=a.chunk_size, chunk_overlap=a.chunk_overlap, k=a.k)
+    cfg = Config(name=a.name, chunk_size=a.chunk_size, chunk_overlap=a.chunk_overlap,
+                 embedding_model=a.embedding_model, retrieval=a.retrieval, reranker=a.reranker, k=a.k)
+    return cfg, a.retrieval_only
 
 
 if __name__ == "__main__":
-    run(parse_args())
+    cfg, retrieval_only = parse_args()
+    run(cfg, retrieval_only)
