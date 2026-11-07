@@ -14,7 +14,7 @@
   "judge_model": null,
   "relevancy_embedding_model": null,
   "judge_spend_total": null,
-  "timestamp": "2026-11-07T17:40:25+00:00",
+  "timestamp": "2026-11-07T18:06:37+00:00",
   "n_questions": 51,
   "n_chunks": 464,
   "runtime_s": 15,

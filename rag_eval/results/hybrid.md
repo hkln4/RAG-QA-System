@@ -1,6 +1,6 @@
 # RAG eval: hybrid
 
-2026-11-07T17:40:09+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `models/gemini-embedding-001` · retrieval hybrid · reranker None · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `claude-haiku-5-5`
+2026-11-07T18:06:22+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `models/gemini-embedding-001` · retrieval hybrid · reranker None · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `claude-haiku-5-5`
 
 ## Retrieval
 

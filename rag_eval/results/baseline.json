@@ -14,14 +14,14 @@
   "judge_model": "claude-haiku-5-5",
   "relevancy_embedding_model": "BAAI/bge-base-en-v1.5",
   "judge_spend_total": {
-    "input_tokens": 243943,
-    "output_tokens": 26520,
-    "usd": 0.0376543
+    "input_tokens": 477386,
+    "output_tokens": 53065,
+    "usd": 0.0742711
   },
-  "timestamp": "2026-11-07T17:31:57+00:00",
+  "timestamp": "2026-11-07T17:55:21+00:00",
   "n_questions": 51,
   "n_chunks": 464,
-  "runtime_s": 147,
+  "runtime_s": 9,
   "environment": {
     "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
     "python": "3.13.1"

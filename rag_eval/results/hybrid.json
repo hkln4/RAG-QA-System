@@ -18,10 +18,10 @@
     "output_tokens": 53065,
     "usd": 0.0742711
   },
-  "timestamp": "2026-11-07T17:40:09+00:00",
+  "timestamp": "2026-11-07T18:06:22+00:00",
   "n_questions": 51,
   "n_chunks": 464,
-  "runtime_s": 466,
+  "runtime_s": 7,
   "environment": {
     "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
     "python": "3.13.1"

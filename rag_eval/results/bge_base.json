@@ -14,10 +14,10 @@
   "judge_model": null,
   "relevancy_embedding_model": null,
   "judge_spend_total": null,
-  "timestamp": "2026-11-07T17:32:23+00:00",
+  "timestamp": "2026-11-07T18:06:15+00:00",
   "n_questions": 51,
   "n_chunks": 464,
-  "runtime_s": 10,
+  "runtime_s": 7,
   "environment": {
     "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
     "python": "3.13.1"

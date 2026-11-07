@@ -1,6 +1,6 @@
 # RAG eval: bge_base
 
-2026-11-07T17:32:23+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `BAAI/bge-base-en-v1.5` · retrieval dense · reranker None · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `None`
+2026-11-07T18:06:15+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `BAAI/bge-base-en-v1.5` · retrieval dense · reranker None · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `None`
 
 ## Retrieval
 

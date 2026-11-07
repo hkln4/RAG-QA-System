@@ -24,6 +24,29 @@
       ]
     },
     {
+      "name": "chunk_500",
+      "variable": "chunk size",
+      "value": "500 / 100",
+      "n_chunks": 889,
+      "hit@1": 0.43478260869565216,
+      "hit@5": 0.8478260869565217,
+      "recall@5": 0.8260869565217391,
+      "recall@10": 0.9565217391304348,
+      "mrr": 0.5930383022774327,
+      "identifier_hit@5": 0.8571428571428571,
+      "paraphrased_hit@5": 0.9285714285714286,
+      "delta_recall@5": 0.0,
+      "ci_recall@5": [
+        -0.10869565217391304,
+        0.10869565217391304
+      ],
+      "delta_mrr": -0.03349723947550034,
+      "ci_mrr": [
+        -0.13656832298136645,
+        0.07230848861283644
+      ]
+    },
+    {
       "name": "bge_small",
       "variable": "embedding",
       "value": "bge-small-en-v1.5",
@@ -117,11 +140,6 @@
     }
   ],
   "pending": [
-    [
-      "chunk size",
-      "500 / 100",
-      "API quota or judge budget"
-    ],
     [
       "chunk size",
       "2000 / 400",

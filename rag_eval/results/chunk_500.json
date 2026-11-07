@@ -1,0 +1,4016 @@
+{
+  "config": {
+    "name": "chunk_500",
+    "chunk_size": 500,
+    "chunk_overlap": 100,
+    "embedding_model": "models/gemini-embedding-001",
+    "retrieval": "dense",
+    "reranker": null,
+    "k": 5,
+    "answer_model": "models/gemini-3.1-flash-lite",
+    "temperature": 0.0
+  },
+  "retrieval_only": true,
+  "judge_model": null,
+  "relevancy_embedding_model": null,
+  "judge_spend_total": null,
+  "timestamp": "2026-11-07T18:02:02+00:00",
+  "n_questions": 51,
+  "n_chunks": 889,
+  "runtime_s": 401,
+  "environment": {
+    "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+    "python": "3.13.1"
+  },
+  "summary": {
+    "retrieval": {
+      "all": {
+        "n": 46,
+        "hit@1": 0.43478260869565216,
+        "recall@1": 0.41304347826086957,
+        "hit@3": 0.6304347826086957,
+        "recall@3": 0.6195652173913043,
+        "hit@5": 0.8478260869565217,
+        "recall@5": 0.8260869565217391,
+        "hit@10": 0.9565217391304348,
+        "recall@10": 0.9565217391304348,
+        "mrr": 0.5930383022774327
+      },
+      "paraphrased": {
+        "n": 14,
+        "hit@1": 0.5,
+        "recall@1": 0.5,
+        "hit@3": 0.8571428571428571,
+        "recall@3": 0.8571428571428571,
+        "hit@5": 0.9285714285714286,
+        "recall@5": 0.9285714285714286,
+        "hit@10": 0.9285714285714286,
+        "recall@10": 0.9285714285714286,
+        "mrr": 0.6928571428571428
+      },
+      "not_paraphrased": {
+        "n": 32,
+        "hit@1": 0.40625,
+        "recall@1": 0.375,
+        "hit@3": 0.53125,
+        "recall@3": 0.515625,
+        "hit@5": 0.8125,
+        "recall@5": 0.78125,
+        "hit@10": 0.96875,
+        "recall@10": 0.96875,
+        "mrr": 0.5493675595238096
+      },
+      "identifier": {
+        "n": 7,
+        "hit@1": 0.42857142857142855,
+        "recall@1": 0.42857142857142855,
+        "hit@3": 0.7142857142857143,
+        "recall@3": 0.7142857142857143,
+        "hit@5": 0.8571428571428571,
+        "recall@5": 0.8571428571428571,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5965986394557824
+      },
+      "multi_hop": {
+        "n": 4,
+        "hit@1": 0.25,
+        "recall@1": 0.125,
+        "hit@3": 0.25,
+        "recall@3": 0.125,
+        "hit@5": 0.75,
+        "recall@5": 0.5,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.39821428571428574
+      }
+    },
+    "generation": {},
+    "refusal": {}
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "type": "definition",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          6,
+          752,
+          1208
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          6,
+          404,
+          831
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          778,
+          1246
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          1899,
+          2387
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          14,
+          1507,
+          1993
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2648,
+          3103
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          1255,
+          1723
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          15,
+          0,
+          486
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q02",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          0,
+          412
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          452
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          372,
+          821
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          1101,
+          1589
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          325,
+          783
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          14,
+          1507,
+          1993
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1510,
+          1931
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      }
+    },
+    {
+      "id": "q03",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2583,
+          2747
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1227
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          2,
+          0,
+          376
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          354,
+          780
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2022,
+          2485
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          415
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          778,
+          1246
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          1,
+          0,
+          76
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.14285714285714285
+      }
+    },
+    {
+      "id": "q04",
+      "type": "definition",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          1507,
+          1926
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          1255,
+          1723
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          36,
+          1132,
+          1566
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1846,
+          2273
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          1848,
+          2282
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          9,
+          1869,
+          2352
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          1155,
+          1594
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          9,
+          404,
+          818
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          0,
+          442
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q05",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          354,
+          780
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          0,
+          413
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2022,
+          2485
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          324,
+          775
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          686,
+          1162
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          411,
+          849
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          757,
+          1187
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1227
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          2554,
+          2964
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          415
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q06",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          0,
+          466
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          380,
+          876
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          0,
+          463
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          45,
+          2090,
+          2563
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          0,
+          490
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          2016,
+          2454
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          1103,
+          1566
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          2264,
+          2565
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          1594,
+          2074
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q07",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          47,
+          1449,
+          1881
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          0,
+          420
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          0,
+          432
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          5,
+          1183,
+          1639
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          1791,
+          2272
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          47,
+          374,
+          815
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          1012,
+          1479
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2648,
+          3103
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          47,
+          730,
+          1157
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          18,
+          1088,
+          1567
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      }
+    },
+    {
+      "id": "q08",
+      "type": "definition",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          22,
+          346,
+          844
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          1915,
+          2365
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          2515,
+          2940
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          1538,
+          2005
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          2146,
+          2603
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          2277,
+          2764
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          2672,
+          2928
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          22,
+          0,
+          438
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          2857,
+          3129
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          1202,
+          1627
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q09",
+      "type": "list",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          0,
+          478
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          387,
+          832
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          1505,
+          1678
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          1145,
+          1596
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          2021,
+          2482
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          45,
+          1448,
+          1941
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          746,
+          1232
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          782,
+          1248
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          2147,
+          2621
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          415
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q10",
+      "type": "definition",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          712,
+          1160
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          1433,
+          1852
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          1064,
+          1531
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          757,
+          1187
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          775,
+          1237
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          1597,
+          1956
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          452
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          354,
+          780
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          45,
+          772,
+          1247
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          1149,
+          1647
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q11",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          392,
+          837
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          0,
+          443
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          1117,
+          1610
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          0,
+          490
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          0,
+          454
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          1548,
+          2042
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          1554,
+          2032
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          29,
+          806,
+          1236
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          1168,
+          1644
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q12",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          343,
+          780
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          35,
+          848,
+          1336
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          35,
+          430,
+          912
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          35,
+          1273,
+          1710
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          14,
+          1507,
+          1993
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          37,
+          0,
+          472
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          35,
+          0,
+          496
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          34,
+          1619,
+          2103
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q13",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          44,
+          0,
+          425
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          0,
+          466
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          746,
+          1230
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          343,
+          810
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          0,
+          439
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          380,
+          876
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          458,
+          866
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          17,
+          816,
+          1213
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          2156,
+          2651
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1510,
+          1931
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q14",
+      "type": "definition",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          746,
+          1230
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          1507,
+          1926
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          44,
+          344,
+          769
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          343,
+          810
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          0,
+          471
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          1594,
+          2074
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          36,
+          1132,
+          1566
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          9,
+          731,
+          1193
+        ],
+        [
+          "nist_csf_2.pdf",
+          21,
+          2002,
+          2294
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          44,
+          0,
+          425
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q15",
+      "type": "definition",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1846,
+          2273
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          770,
+          1233
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1510,
+          1931
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1104,
+          1566
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1154,
+          1600
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1470,
+          1965
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1486,
+          1928
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          349,
+          812
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1949,
+          2429
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          708,
+          1191
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q16",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          372,
+          821
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          1101,
+          1589
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          2016,
+          2454
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          1117,
+          1610
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          754,
+          1185
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          381,
+          807
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          392,
+          837
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          1554,
+          2032
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          0,
+          443
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q17",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          323,
+          736
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          0,
+          420
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          1586,
+          2053
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          8,
+          2351,
+          2803
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2939,
+          3250
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          738,
+          1185
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          2285,
+          2770
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          1187,
+          1644
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          2672,
+          2960
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2055,
+          2457
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      }
+    },
+    {
+      "id": "q18",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          390,
+          847
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1267
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          9,
+          746,
+          1160
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          43,
+          1658,
+          2131
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          2361,
+          2724
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1531,
+          2020
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          0,
+          433
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          1663,
+          2129
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          7,
+          1302,
+          1760
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          51,
+          1179,
+          1643
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q19",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          454,
+          913
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          819,
+          1314
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          0,
+          452
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          1091,
+          1379
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          1455,
+          1930
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          63,
+          758,
+          1236
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1292,
+          1771
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2166,
+          2581
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          4,
+          442,
+          735
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          1990,
+          2473
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q20",
+      "type": "definition",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          332,
+          780
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          43,
+          809,
+          1305
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          323,
+          736
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          0,
+          430
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          738,
+          1185
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          43,
+          1239,
+          1728
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          2410,
+          2821
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          11,
+          2098,
+          2548
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          763,
+          1239
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          743,
+          1202
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q21",
+      "type": "definition",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          1204,
+          1661
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          354,
+          780
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          415
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          1145,
+          1596
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          1663,
+          2142
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2022,
+          2485
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          1549,
+          1984
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          411,
+          849
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          417,
+          859
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          33,
+          1154,
+          1611
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q22",
+      "type": "definition",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          362,
+          761
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          1485,
+          1945
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          0,
+          452
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          11,
+          413,
+          814
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          1874,
+          2317
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          2192,
+          2614
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          58,
+          868,
+          1293
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          57,
+          901,
+          1321
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          1990,
+          2473
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          53,
+          2331,
+          2779
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 0.5,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q23",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          910,
+          1376
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          1281,
+          1762
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          855,
+          1266
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          2486,
+          2896
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          413,
+          908
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          1653,
+          2145
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          0,
+          495
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          11,
+          0,
+          411
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          63,
+          1168,
+          1654
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          751,
+          1155
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q24",
+      "type": "definition",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          354,
+          780
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          0,
+          430
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          415
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          1549,
+          1984
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          411,
+          849
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1227
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2022,
+          2485
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          417,
+          859
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          0,
+          471
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2583,
+          2747
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 0.0,
+        "recall@10": 0.0,
+        "mrr": 0.0
+      }
+    },
+    {
+      "id": "q25",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2166,
+          2581
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2583,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          424
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1773,
+          2164
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          1842,
+          2329
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          1,
+          0,
+          245
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1292,
+          1771
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1290
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      }
+    },
+    {
+      "id": "q26",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2166,
+          2581
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1773,
+          2164
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          424
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2583,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1292,
+          1771
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1290
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          27,
+          0,
+          493
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          2005,
+          2220
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          1886,
+          2340
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q27",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          2274,
+          2607
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          1886,
+          2340
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          0,
+          475
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          20,
+          370,
+          803
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          394,
+          863
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          1500,
+          1972
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          1103,
+          1566
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          409,
+          868
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          1568,
+          2046
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          23,
+          1506,
+          1854
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.14285714285714285
+      }
+    },
+    {
+      "id": "q28",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          23,
+          1506,
+          1854
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          1892,
+          2298
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          50,
+          0,
+          377
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          1171,
+          1630
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          20,
+          370,
+          803
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          1529,
+          1970
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          57,
+          498,
+          899
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          24,
+          0,
+          423
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          2361,
+          2724
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          1545,
+          2009
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q29",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          39,
+          1206,
+          1673
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          0,
+          373
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          695,
+          1123
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          343,
+          780
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          43,
+          1250,
+          1685
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          393,
+          838
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          1091,
+          1379
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          36,
+          398,
+          859
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          36,
+          1147,
+          1643
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          38,
+          361,
+          811
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      }
+    },
+    {
+      "id": "q30",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          353,
+          786
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          1249,
+          1706
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1183,
+          1646
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1138,
+          1624
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          24,
+          1640,
+          2137
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          2114,
+          2563
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          748,
+          1239
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1574,
+          2040
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1954,
+          2451
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          830,
+          1247
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q31",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          1708,
+          2112
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          2114,
+          2563
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1183,
+          1646
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          2361,
+          2724
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          458,
+          866
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          353,
+          786
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1138,
+          1624
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1954,
+          2451
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          748,
+          1239
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          1249,
+          1706
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q32",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          53,
+          832,
+          1279
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          53,
+          371,
+          830
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          323,
+          736
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          1586,
+          2053
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2939,
+          3250
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          2474,
+          2876
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          738,
+          1185
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          1442,
+          1894
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          34,
+          1548,
+          1980
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          18,
+          2219,
+          2699
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q33",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          10,
+          389,
+          886
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1483,
+          1942
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          934,
+          1344
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          0,
+          447
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1847,
+          2320
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1102,
+          1576
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          499,
+          922
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          876,
+          1330
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          0,
+          480
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          689,
+          1187
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.14285714285714285
+      }
+    },
+    {
+      "id": "q34",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          6,
+          1040,
+          1514
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          2767
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          388,
+          838
+        ],
+        [
+          "nist_csf_2.pdf",
+          30,
+          418,
+          905
+        ],
+        [
+          "nist_csf_2.pdf",
+          30,
+          1233,
+          1731
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          1163,
+          1647
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          767,
+          1249
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          0,
+          469
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1757,
+          2220
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          1965,
+          2440
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      }
+    },
+    {
+      "id": "q35",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          29,
+          388,
+          838
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          1603,
+          2054
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          1856,
+          2308
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          3241,
+          3406
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          1481,
+          1933
+        ],
+        [
+          "nist_csf_2.pdf",
+          14,
+          1887,
+          2354
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          2898,
+          3326
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          381,
+          810
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          672,
+          1133
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          386,
+          829
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q36",
+      "type": "definition",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          11,
+          1147,
+          1579
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          458,
+          932
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1486,
+          1928
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          1200,
+          1639
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2201,
+          2696
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          672,
+          1133
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1319,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1839,
+          1997
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          0,
+          456
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          708,
+          1191
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q37",
+      "type": "list",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          11,
+          1839,
+          1997
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          708,
+          1191
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          1200,
+          1639
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1486,
+          1928
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          672,
+          1133
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2201,
+          2696
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1147,
+          1579
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1470,
+          1965
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          458,
+          932
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          0,
+          433
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.125
+      }
+    },
+    {
+      "id": "q38",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          18,
+          2359,
+          2522
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          2389,
+          2616
+        ],
+        [
+          "nist_csf_2.pdf",
+          18,
+          1952,
+          2437
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          390,
+          861
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1273
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          2018,
+          2476
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          780,
+          1239
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          764,
+          1192
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          1555,
+          2045
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          0,
+          440
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      }
+    },
+    {
+      "id": "q39",
+      "type": "identifier",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          18,
+          1952,
+          2437
+        ],
+        [
+          "nist_csf_2.pdf",
+          18,
+          1173,
+          1614
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1224
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          2767
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          1545,
+          2035
+        ],
+        [
+          "nist_csf_2.pdf",
+          18,
+          2359,
+          2522
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          0,
+          440
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          2389,
+          2616
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          390,
+          861
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1319,
+          1772
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      }
+    },
+    {
+      "id": "q40",
+      "type": "fact",
+      "paraphrased": true,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          9,
+          1847,
+          2320
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1483,
+          1942
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          499,
+          922
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          1481,
+          1933
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          2226,
+          2648
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          388,
+          876
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          336,
+          755
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          1200,
+          1639
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          934,
+          1344
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          1849,
+          2161
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      }
+    },
+    {
+      "id": "q41",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          9,
+          1483,
+          1942
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1102,
+          1576
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1847,
+          2320
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          389,
+          886
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          0,
+          480
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          499,
+          922
+        ],
+        [
+          "nist_csf_2.pdf",
+          27,
+          0,
+          489
+        ],
+        [
+          "nist_csf_2.pdf",
+          27,
+          1618,
+          2109
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          934,
+          1344
+        ],
+        [
+          "nist_csf_2.pdf",
+          27,
+          436,
+          881
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      }
+    },
+    {
+      "id": "q42",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          388,
+          876
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1273
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          499,
+          922
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          0,
+          412
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          1101,
+          1589
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          757,
+          1187
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          452
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          372,
+          821
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 0.5,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      }
+    },
+    {
+      "id": "q43",
+      "type": "fact",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          757,
+          1187
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1227
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          1097,
+          1545
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          354,
+          780
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2022,
+          2485
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2583,
+          2747
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          394,
+          850
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          372,
+          821
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          2197,
+          2653
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          452
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 0.0,
+        "recall@10": 0.0,
+        "mrr": 0.0
+      }
+    },
+    {
+      "id": "q44",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          23,
+          1545,
+          2035
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          1163,
+          1623
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1224
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          1948,
+          2395
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          386,
+          822
+        ],
+        [
+          "nist_csf_2.pdf",
+          25,
+          1811,
+          2286
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          1166,
+          1637
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          499,
+          922
+        ],
+        [
+          "nist_csf_2.pdf",
+          14,
+          1111,
+          1606
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          2362,
+          2476
+        ]
+      ]
+    },
+    {
+      "id": "q45",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          47,
+          806,
+          1257
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          48,
+          0,
+          436
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1936,
+          2361
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          4,
+          442,
+          735
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          47,
+          1200,
+          1691
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          39,
+          393,
+          846
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          35,
+          1353,
+          1852
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          35,
+          919,
+          1351
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          56,
+          0,
+          418
+        ]
+      ]
+    },
+    {
+      "id": "q46",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          775,
+          1237
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          3,
+          741,
+          1162
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          1892,
+          2298
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          20,
+          370,
+          803
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          57,
+          1229,
+          1440
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          458,
+          866
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1510,
+          1931
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          56,
+          2129,
+          2594
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          747,
+          1225
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          690,
+          1104
+        ]
+      ]
+    },
+    {
+      "id": "q47",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          2767
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          1040,
+          1514
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          388,
+          838
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2201,
+          2696
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          769,
+          1108
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          672,
+          1133
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1757,
+          2220
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          375,
+          851
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          0,
+          469
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          1965,
+          2440
+        ]
+      ]
+    },
+    {
+      "id": "q48",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          5,
+          3241,
+          3406
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          2207,
+          2621
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          1113,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          1143,
+          1607
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          386,
+          829
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          2898,
+          3326
+        ],
+        [
+          "nist_csf_2.pdf",
+          2,
+          366,
+          785
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1273
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          762,
+          1215
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          381,
+          810
+        ]
+      ]
+    },
+    {
+      "id": "q49",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          1,
+          0,
+          245
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1154,
+          1600
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1292,
+          1771
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1290
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2583,
+          2747
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          39,
+          0,
+          468
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          424
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.14285714285714285
+      }
+    },
+    {
+      "id": "q50",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1846,
+          2273
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1510,
+          1931
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1154,
+          1600
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          770,
+          1233
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1486,
+          1928
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1757,
+          2220
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          458,
+          932
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1147,
+          1579
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          2767
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 0.5,
+        "hit@3": 1.0,
+        "recall@3": 0.5,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "id": "q51",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          426,
+          841
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          323,
+          736
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          0,
+          432
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          5,
+          1183,
+          1639
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1510,
+          1931
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          4,
+          398,
+          861
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          0,
+          420
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          0,
+          420
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2939,
+          3250
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2442,
+          2933
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 0.5,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      }
+    }
+  ]
+}

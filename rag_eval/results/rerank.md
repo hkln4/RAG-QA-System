@@ -1,6 +1,6 @@
 # RAG eval: rerank
 
-2026-11-07T17:40:25+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `models/gemini-embedding-001` · retrieval dense · reranker cross-encoder/ms-marco-MiniLM-L-6-v2 · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `None`
+2026-11-07T18:06:37+00:00 · 51 questions · 464 chunks · chunk 1000/200 · k=5 · embeddings `models/gemini-embedding-001` · retrieval dense · reranker cross-encoder/ms-marco-MiniLM-L-6-v2 · answers `models/gemini-3.1-flash-lite` (T=0.0) · judge `None`
 
 ## Retrieval
 
