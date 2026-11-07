@@ -85,7 +85,7 @@ async def health():
 
 @app.post("/ingest", response_model= IngestResponse)
 async def ingest(request: IngestRequest):
-    global qa_chain, retriever, vector_store_loaded
+    global qa_chain, retriever, vector_store_loaded, current_chunk_size, current_chunk_overlap
     current_chunk_size = request.chunk_size
     current_chunk_overlap = request.chunk_overlap
 
