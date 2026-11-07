@@ -43,3 +43,16 @@ def test_with_retry_raises_non_retryable_errors_immediately(monkeypatch):
     with pytest.raises(ValueError):
         with_retry(broken)
     assert len(calls) == 1
+
+
+def test_with_retry_stops_instead_of_sleeping_through_a_daily_quota(monkeypatch):
+    slept = []
+    monkeypatch.setattr(cache_module.time, "sleep", slept.append)
+
+    def exhausted():
+        raise RuntimeError("429 RESOURCE_EXHAUSTED 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier' "
+                           "'retryDelay': '56699s'")
+
+    with pytest.raises(cache_module.QuotaExhausted, match="PerDay"):
+        with_retry(exhausted)
+    assert slept == []

@@ -17,6 +17,14 @@ CACHE_PATH = Path(__file__).parent / "cache.sqlite"
 # quota and transient server errors; anything else is a real failure and is raised
 RETRYABLE = ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "DEADLINE_EXCEEDED")
 
+# A longer server-requested wait means a daily quota is exhausted (the free tier
+# answered 56699 s); stop with a clear error instead of sleeping for hours.
+MAX_RETRY_DELAY = 300
+
+
+class QuotaExhausted(RuntimeError):
+    pass
+
 
 class Cache:
     def __init__(self, path=CACHE_PATH):
@@ -56,5 +64,11 @@ def with_retry(fn, *args, max_attempts=8, **kwargs):
             if attempt == max_attempts - 1 or not any(t in message for t in RETRYABLE):
                 raise
             delay = retry_delay(message, attempt)
+            if delay > MAX_RETRY_DELAY:
+                quota = re.search(r"quotaId['\"]?\s*:\s*['\"]([^'\"]+)", message)
+                raise QuotaExhausted(
+                    f"server asked to wait {delay:.0f}s ({quota.group(1) if quota else 'quota exhausted'}); "
+                    "rerun later, cached results are kept"
+                ) from e
             print(f"  retryable API error, waiting {delay:.0f}s ({message[:80]})", flush=True)
             time.sleep(delay)
