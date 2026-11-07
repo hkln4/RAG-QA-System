@@ -34,6 +34,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmb
 from rag_eval.cache import Cache, with_retry
 from rag_eval.labels import CORPUS_DIR, load_questions
 from rag_eval.metrics import evidence_spans, score_retrieval
+from core.retrieval import CANDIDATES  # per-list depth for hybrid fusion and the reranker's candidate pool
 from rag_eval.retrievers import BM25, LocalEmbeddings, Reranker, reciprocal_rank_fusion
 from rag_pipeline import (
     ANSWER_MODEL,
@@ -57,7 +58,6 @@ JUDGE_PRICE_PER_MTOK = (0.10, 0.50)  # input, output; prompts under 100k tokens
 RELEVANCY_EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 JUDGE_BUDGET_USD = float(os.getenv("JUDGE_BUDGET_USD", "0.30"))  # total across runs
 KS = (1, 3, 5, 10)
-CANDIDATES = 20  # per-list depth for hybrid fusion and the reranker's candidate pool
 REFUSAL = "this information is not available"
 RESULTS_DIR = Path(__file__).parent / "results"
 

@@ -1,14 +1,12 @@
 """Retrieval variants compared in the quality experiments.
 
 Every variant returns chunk indices ranked best first, so the evaluation
-scores them identically.
+scores them identically. BM25 and fusion come from the app's core.retrieval,
+so the experiments measure the code the API runs.
 """
-import re
-import unicodedata
-
 from langchain_core.embeddings import Embeddings
 
-RRF_K = 60  # standard Reciprocal Rank Fusion constant (Cormack et al., 2009)
+from core.retrieval import BM25, RRF_K, bm25_tokenize, reciprocal_rank_fusion  # noqa: F401  (re-exported)
 
 # BGE v1.5 models are trained with this instruction on the query side only
 BGE_QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
@@ -30,38 +28,6 @@ class LocalEmbeddings(Embeddings):
 
     def embed_query(self, text):
         return self._encoder.encode(self.query_prefix + text, normalize_embeddings=True).tolist()
-
-
-def bm25_tokenize(text):
-    """Lowercased NFKC tokens that keep identifiers such as gv-1.3-007 or id.am-04 whole.
-
-    Splitting on every non-alphanumeric character would turn "GV-1.3-007" into
-    "gv 1 3 007", and exact identifier matching is what BM25 adds over dense
-    retrieval. NFKC also unfolds ligatures ("ﬁ" -> "fi") left by PDF extraction.
-    """
-    text = unicodedata.normalize("NFKC", text).lower()
-    return re.findall(r"[a-z0-9]+(?:[.\-][a-z0-9]+)*", text)
-
-
-class BM25:
-    def __init__(self, texts):
-        from rank_bm25 import BM25Okapi
-
-        self.index = BM25Okapi([bm25_tokenize(t) for t in texts])
-
-    def rank(self, query, n):
-        scores = self.index.get_scores(bm25_tokenize(query))
-        return sorted(range(len(scores)), key=lambda i: -scores[i])[:n]
-
-
-def reciprocal_rank_fusion(rankings, n, k=RRF_K):
-    """Fuse ranked index lists by sum of 1 / (k + rank); uses ranks only, so the
-    incomparable BM25 and cosine score scales need no normalization or weights."""
-    fused = {}
-    for ranking in rankings:
-        for rank, idx in enumerate(ranking, 1):
-            fused[idx] = fused.get(idx, 0.0) + 1.0 / (k + rank)
-    return sorted(fused, key=lambda i: -fused[i])[:n]
 
 
 class Reranker:
