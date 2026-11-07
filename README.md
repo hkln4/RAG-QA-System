@@ -29,8 +29,9 @@ pytest suite, and a GitHub Actions CI pipeline.
   parameters, so retrieval behaviour can be tuned and compared.
 - **FastAPI service.** Typed endpoints with Pydantic validation, a vector store
   loaded once at startup, and a Gradio UI mounted on the same app.
-- **Evaluation harness.** RAGAS faithfulness and answer-relevancy scoring across
-  retrieval configurations.
+- **Evaluation harness.** A labelled 51-question set over public NIST documents,
+  with retrieval metrics (hit@k, recall@k, MRR) and RAGAS faithfulness and
+  answer relevancy; see [Evaluation](#evaluation).
 - **Experiment tracking.** MLflow logs retrieval parameters, latency, and
   evaluation metrics for every run.
 - **Monitoring.** The API exposes Prometheus metrics, Prometheus scrapes them,
@@ -87,18 +88,64 @@ curl -X POST http://localhost:8000/query \
 
 ## Evaluation
 
-`evaluation.py` runs a RAGAS evaluation over a set of test questions, sweeping
-chunk-size, overlap, and top-k configurations and logging the results to MLflow.
+`rag_eval/` evaluates the pipeline on three public-domain NIST publications
+(AI RMF 1.0, the Generative AI Profile AI 600-1, CSF 2.0; 144 pages, 464 chunks
+at the default chunk size).
 
-| Metric           | Score |
-| ---------------- | ----- |
-| Faithfulness     | 0.96  |
-| Answer relevancy | 0.81  |
+- **Questions.** 51 questions in `rag_eval/questions.json`: 46 answerable ones
+  (facts, definitions, lists, identifier lookups, 4 multi-hop across documents)
+  and 5 unanswerable ones that test refusal. 14 are reworded to share few words
+  with their evidence and are reported separately.
+- **Labels.** Each answer is labelled with its page and verbatim evidence text,
+  not chunk ids, because chunk boundaries change with chunk size. A retrieved
+  chunk counts as relevant when it contains at least half of an evidence span.
+  `python rag_eval/labels.py` checks every label against the corpus.
+- **Metrics.** hit@k, recall@k (share of evidence items found, so multi-hop
+  questions need all of them) and MRR over the top 10; RAGAS faithfulness and
+  answer relevancy on the generated answers; refusal rates.
 
+Baseline (the API's defaults: chunk 1000/200, Gemini embeddings, FAISS, k = 5):
+
+| Questions | n | hit@1 | hit@5 | recall@10 | MRR |
+|---|---|---|---|---|---|
+| All answerable | 46 | 0.50 | 0.85 | 0.91 | 0.63 |
+| Reworded | 14 | 0.57 | 0.86 | 0.93 | 0.67 |
+| Identifier lookups | 7 | 0.43 | 0.57 | 0.86 | 0.51 |
+| Multi-hop | 4 | 0.50 | 0.75 | 0.75 | 0.60 |
+
+| Faithfulness | Answer relevancy | Unanswerable refused | Answerable refused |
+|---|---|---|---|
+| 0.96 (41 answered) | 0.67 | 5 / 5 | 5 / 46 |
+
+Identifier lookups ("What does GV-1.3-007 recommend?") are the weakest case for
+dense retrieval. Four of the five false refusals follow a retrieval miss; the
+fifth is a multi-hop question where only one of its two passages was retrieved. Rewording
+questions did not hurt dense retrieval at this sample size. Full per-question
+output is in `rag_eval/results/baseline.json`.
 
 ```bash
-python evaluation.py
+python rag_eval/download_corpus.py   # once; checksums pin the PDFs
+python -m rag_eval.run               # writes rag_eval/results/<name>.{json,md}, logs to MLflow if running
 ```
+
+Every Gemini call is cached in `rag_eval/cache.sqlite` under a hash of its
+input, so rerunning a configuration costs no API calls.
+
+**Limitations.**
+- The judge is the answer model itself (`gemini-3.1-flash-lite`): the free
+  tier allows the stronger `gemini-3.5-flash` only 20 requests a day, against
+  ~230 judge calls per configuration. A model grading its own answers is a
+  known bias, and spot checks show judge errors (a correct "Tier 4 (Adaptive)"
+  scored faithfulness 0).
+- Faithfulness checks agreement with the retrieved context, not correctness: an
+  answer built on the wrong chunks can still score 1.0. Refusals are excluded
+  from it, since the judge scored identical refusals both 0 and 1.
+- RAGAS answer relevancy penalises very short answers, which the app's prompt
+  asks for, so its absolute value is low by construction.
+- 46 answerable questions over one domain; differences of a few points between
+  configurations are within noise. The questions were drafted by an LLM and
+  reviewed by hand.
+- The eval answers at temperature 0; the app uses 0.3.
 
 ---
 
