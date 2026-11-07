@@ -75,7 +75,11 @@ def validate(questions, pages):
     if len(ids) != len(set(ids)):
         errors.append("duplicate question ids")
     for q in questions:
-        if not q.get("evidence"):
+        # unanswerable questions test refusal; they have no evidence and are left out of retrieval metrics
+        if q["type"] == "unanswerable":
+            if q.get("evidence"):
+                errors.append(f"{q['id']}: unanswerable question must not have evidence")
+        elif not q.get("evidence"):
             errors.append(f"{q['id']}: no evidence")
         for ev in q.get("evidence", []):
             listed = evidence_locations(ev)

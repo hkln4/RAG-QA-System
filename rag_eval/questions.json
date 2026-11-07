@@ -1,0 +1,471 @@
+[
+  {
+    "id": "q01",
+    "type": "definition",
+    "question": "How does the AI RMF define an AI system?",
+    "answer": "An engineered or machine-based system that can, for a given set of objectives, generate outputs such as predictions, recommendations, or decisions influencing real or virtual environments, operating with varying levels of autonomy.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 6, "text": "The AI RMF refers to an AI system as an engineered or machine-based system that can, for a given set of objectives, generate outputs such as predictions, recommendations, or decisions influencing real or virtual environments."}
+    ]
+  },
+  {
+    "id": "q02",
+    "type": "list",
+    "question": "What are the four functions of the AI RMF Core?",
+    "answer": "GOVERN, MAP, MEASURE, and MANAGE.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 8, "text": "These functions – GOVERN , MAP, MEASURE , and MANAGE – are broken down further into categories and subcategories."}
+    ]
+  },
+  {
+    "id": "q03",
+    "type": "fact",
+    "question": "Which law directed NIST to develop the AI Risk Management Framework?",
+    "answer": "The National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283).",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 7, "text": "As directed by the National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283), the goal of the AI RMF is to offer a resource to the organizations designing, developing, deploying, or using AI systems"}
+    ]
+  },
+  {
+    "id": "q04",
+    "type": "definition",
+    "question": "Under the AI RMF, what is the risk that is left over once risk treatment has been applied called?",
+    "answer": "Residual risk: the risk remaining after risk treatment (ISO Guide 73); it directly impacts end users or affected individuals and communities.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 13, "text": "Residual risk – defined as risk remaining after risk treatment (Source: ISO GUIDE 73) – directly impacts end users or affected individuals and communities."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q05",
+    "type": "fact",
+    "question": "Does NIST tell organizations how much AI risk they should be willing to accept?",
+    "answer": "No. The AI RMF can be used to prioritize risk but does not prescribe risk tolerance, which is contextual and use-case specific.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 12, "text": "While the AI RMF can be used to prioritize risk, it does not prescribe risk tolerance."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q06",
+    "type": "fact",
+    "question": "What does the AI RMF say an organization should do if an AI system turns out to be too dangerous to keep building or running?",
+    "answer": "Development and deployment should cease in a safe manner until the risks can be sufficiently managed.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 13, "text": "development and deployment should cease in a safe manner until risks can be sufficiently managed."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q07",
+    "type": "fact",
+    "question": "Which trustworthiness characteristic does the AI RMF describe as a necessary condition of trustworthiness?",
+    "answer": "Valid and reliable; it is shown as the base for the other trustworthiness characteristics.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 17, "text": "Valid & Reliable is a necessary condition of trustworthiness and is shown as the base for other trustworthiness characteristics.", "also_on": [{"doc": "nist_ai_rmf.pdf", "page": 5}]}
+    ]
+  },
+  {
+    "id": "q08",
+    "type": "definition",
+    "question": "Which questions do transparency, explainability, and interpretability each answer about an AI system?",
+    "answer": "Transparency answers what happened, explainability answers how a decision was made, and interpretability answers why a decision was made and what it means to the user.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 22, "text": "Transparency can answer the question of “what happened” in the system. Explainability can answer the question of “how” a decision was made in the system. Interpretability can answer the question of “why” a decision was made by the system and its meaning or context to the user."}
+    ]
+  },
+  {
+    "id": "q09",
+    "type": "list",
+    "question": "Into which broad groups does NIST sort the sources of AI bias?",
+    "answer": "Systemic, computational and statistical, and human-cognitive.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 23, "text": "NIST has identified three major categories of AI bias to be considered and managed: systemic, computational and statistical, and human-cognitive."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q10",
+    "type": "definition",
+    "question": "In NIST's AI framework, how is bouncing back after an unexpected incident different from defending against attacks?",
+    "answer": "Resilience is the ability to return to normal function after an unexpected adverse event; security includes resilience but also covers protocols to avoid, protect against, respond to, or recover from attacks.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 20, "text": "While resilience is the ability to return to normal function after an unexpected adverse event, security includes resilience but also encompasses protocols to avoid, protect against, respond to, or recover from attacks."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q11",
+    "type": "identifier",
+    "question": "What does AI RMF subcategory GOVERN 1.7 require?",
+    "answer": "Processes and procedures for decommissioning and phasing out AI systems safely, without increasing risks or decreasing the organization's trustworthiness.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 28, "text": "GOVERN 1.7: Processes and procedures are in place for decommissioning and phasing out AI systems safely and in a manner that does not increase risks or decrease the organization’s trustworthiness.", "also_on": [{"doc": "nist_ai_600_1.pdf", "page": 21}]}
+    ]
+  },
+  {
+    "id": "q12",
+    "type": "identifier",
+    "question": "What does MEASURE 2.12 cover in the AI RMF?",
+    "answer": "Assessing and documenting the environmental impact and sustainability of AI model training and management activities.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 35, "text": "MEASURE 2.12: Environmental impact and sustainability of AI model training and management activities – as identified in the MAP function – are assessed and documented.", "also_on": [{"doc": "nist_ai_600_1.pdf", "page": 41}]}
+    ]
+  },
+  {
+    "id": "q13",
+    "type": "list",
+    "question": "Which risk response options does the AI RMF list for high-priority AI risks?",
+    "answer": "Mitigating, transferring, avoiding, or accepting.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 37, "text": "Risk response options can include mitigating, transfer- ring, avoiding, or accepting.", "also_on": [{"doc": "nist_ai_600_1.pdf", "page": 44}]}
+    ]
+  },
+  {
+    "id": "q14",
+    "type": "definition",
+    "question": "How does MANAGE 1.4 define negative residual risks?",
+    "answer": "As the sum of all unmitigated risks; they must be documented for both downstream acquirers of AI systems and end users.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 37, "text": "MANAGE 1.4: Negative residual risks (defined as the sum of all unmitigated risks) to both downstream acquirers of AI systems and end users are documented."}
+    ]
+  },
+  {
+    "id": "q15",
+    "type": "definition",
+    "question": "In the AI RMF, what is the difference between a Current Profile and a Target Profile?",
+    "answer": "A Current Profile indicates how AI is currently being managed and the related risks in terms of current outcomes; a Target Profile indicates the outcomes needed to achieve the desired AI risk management goals.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 38, "text": "An AI RMF Current Profile indicates how AI is currently being managed and the related risks in terms of current outcomes. A Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals."}
+    ]
+  },
+  {
+    "id": "q16",
+    "type": "fact",
+    "question": "Once governance is in place, where do most organizations begin when applying NIST's AI risk framework?",
+    "answer": "MAP, continuing to MEASURE or MANAGE.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 26, "text": "After instituting the outcomes in GOVERN , most users of the AI RMF would start with the MAP function and continue to MEASURE or MANAGE ."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q17",
+    "type": "fact",
+    "question": "Why do some commenters object to the terms \"hallucination\" and \"fabrication\" for GAI errors?",
+    "answer": "Because the terms anthropomorphize GAI, which is itself a risk since it can inappropriately attribute human characteristics to non-human entities.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 8, "text": "Some commenters have noted that the terms “hallucination” and “fabrication” anthropomorphize GAI, which itself is a risk related to GAI systems as it can inappropriately attribute human characteristics to non-human entities."}
+    ]
+  },
+  {
+    "id": "q18",
+    "type": "list",
+    "question": "Why is value chain and component integration risk exacerbated for generative AI?",
+    "answer": "Because of the scale of the training data, which may be too large for humans to vet; the difficulty of training foundation models, which leads to extensive reuse of a limited number of models; and the extent to which GAI may be integrated into other devices and services.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 16, "text": "the risk is exacerbated for GAI due to the scale of the training data, which may be too large for humans to vet; the diﬃculty of training foundation models, which leads to extensive reuse of limited numbers of models; and the extent to which GAI may be integrated into other devices and services."}
+    ]
+  },
+  {
+    "id": "q19",
+    "type": "fact",
+    "question": "What air-travel comparison does the generative AI profile use for the emissions of training a large language model?",
+    "answer": "As much as 300 round-trip flights between San Francisco and New York.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 12, "text": "Current estimates suggest that training a single transformer LLM can emit as much carbon as 300 round-trip ﬂights between San Francisco and New York."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q20",
+    "type": "definition",
+    "question": "What can happen to a model's outputs when it is trained mostly on machine-generated data?",
+    "answer": "Model collapse: data points disappear from the distribution of the new model's outputs, which can also homogenize outputs and threaten robustness.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 13, "text": "Model collapse can occur when model training over-relies on synthetic data, resulting in data points disappearing from the distribution of the new model’s outputs."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q21",
+    "type": "definition",
+    "question": "What does NIST call people's tendency to trust automated output too much?",
+    "answer": "Automation bias: excessive deference to automated systems, such as over-relying on GAI or perceiving its content as higher quality than other sources.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 13, "text": "This phenomenon is an example of automation bias, or excessive deference to automated systems."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q22",
+    "type": "definition",
+    "question": "What is the difference between direct and indirect prompt injection?",
+    "answer": "In direct prompt injection, attackers input malicious prompts directly into a GAI system; in indirect prompt injection, adversaries remotely exploit LLM-integrated applications by injecting prompts into data likely to be retrieved.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 15, "text": "In direct prompt injections, attackers might craft malicious prompts and input them directly to a GAI system"},
+      {"doc": "nist_ai_600_1.pdf", "page": 15, "text": "Indirect prompt injection attacks occur when adversaries remotely (i.e., without a direct interface) exploit LLM-integrated applications by injecting prompts into data likely to be retrieved."}
+    ]
+  },
+  {
+    "id": "q23",
+    "type": "fact",
+    "question": "Which viral fake picture does the generative AI profile say moved stock prices?",
+    "answer": "A synthetic image of a Pentagon blast went viral and briefly caused a drop in the stock market.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 14, "text": "a synthetic image of a Pentagon blast went viral and brieﬂy caused a drop in the stock market."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q24",
+    "type": "definition",
+    "question": "What does NIST call the problem of many decision-makers relying on the same model and failing together?",
+    "answer": "Algorithmic monocultures: repeated use of the same model or algorithm in consequential decisions such as employment and lending, which increases susceptibility to correlated failures.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 6, "text": "“Algorithmic monocultures” refers to the phenomenon in which repeated use of the same model or algorithm in consequential decision-making settings like employment and lending can result in increased susceptibility by systems to correlated failures (like unexpected shocks), due to multiple actors relying on the same algorithm."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q25",
+    "type": "fact",
+    "question": "Under which executive order was the Generative AI Profile developed?",
+    "answer": "Executive Order 14110 on Safe, Secure, and Trustworthy Artificial Intelligence.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 5, "text": "pursuant to President Biden’s Executive Order (EO) 14110 on Safe, Secure, and Trustworthy Artiﬁcial Intelligence."}
+    ]
+  },
+  {
+    "id": "q26",
+    "type": "fact",
+    "question": "How many parameters does EO 14110 require a dual-use foundation model to have, as quoted in the Generative AI Profile?",
+    "answer": "At least tens of billions of parameters.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 5, "text": "contains at least tens of billions of parameters; is applicable across a wide range of contexts."}
+    ]
+  },
+  {
+    "id": "q27",
+    "type": "identifier",
+    "question": "What does suggested action GV-1.3-007 recommend?",
+    "answer": "Devising a plan to halt development or deployment of a GAI system that poses unacceptable negative risk.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 19, "text": "GV-1.3-007 Devise a plan to halt development or deployment of a GAI system that poses unacceptable negative risk."}
+    ]
+  },
+  {
+    "id": "q28",
+    "type": "list",
+    "question": "Which minimum criteria for GAI incident reporting does action GV-4.3-002 list?",
+    "answer": "System ID, Title, Reporter, System/Source, Data Reported, Date of Incident, Description, Impact(s), and Stakeholder(s) Impacted.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 23, "text": "System ID (auto-generated most likely), Title, Reporter, System/Source, Data Reported, Date of Incident, Description, Impact(s), Stakeholder(s) Impacted."}
+    ]
+  },
+  {
+    "id": "q29",
+    "type": "identifier",
+    "question": "What does suggested action MS-2.12-002 recommend?",
+    "answer": "Documenting anticipated environmental impacts of model development, maintenance, and deployment in product design decisions.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 41, "text": "MS-2.12-002 Document anticipated environmental impacts of model development, maintenance, and deployment in product design decisions."}
+    ]
+  },
+  {
+    "id": "q30",
+    "type": "identifier",
+    "question": "Which suggested action ID recommends including contract clauses that let an organization evaluate third-party GAI processes and standards?",
+    "answer": "GV-6.1-006.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 25, "text": "GV-6.1-006 Include clauses in contracts which allow an organization to evaluate third-party GAI processes and standards."}
+    ]
+  },
+  {
+    "id": "q31",
+    "type": "list",
+    "question": "Which standard risk controls does the Generative AI Profile mention for third-party transparency, such as SBOMs?",
+    "answer": "Acquisition and procurement due diligence, requests for software bills of materials (SBOMs), service level agreements (SLAs), and statement on standards for attestation engagement (SSAE) reports.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 52, "text": "including acquisition and procurement due diligence, requests for software bills of materials (SBOMs), application of service level agreements (SLAs), and statement on standards for attestation engagement (SSAE) reports"}
+    ]
+  },
+  {
+    "id": "q32",
+    "type": "fact",
+    "question": "Why might passing an IQ test or a licensing exam not prove that a generative model is reliable?",
+    "answer": "Anecdotal testing through video games or human tests such as intelligence tests or professional licensing exams does not guarantee GAI validity or reliability in those domains.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 53, "text": "the anecdotal testing of GAI system capabilities through video games or standardized tests designed for humans (e.g., intelligence tests, professional licensing exams) does not guarantee GAI system validity or reliability in those domains."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q33",
+    "type": "list",
+    "question": "What are the six Functions of the NIST CSF 2.0 Core?",
+    "answer": "GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 8, "text": "The CSF Core Functions — G OVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER — organize cybersecurity outcomes at their highest level."}
+    ]
+  },
+  {
+    "id": "q34",
+    "type": "fact",
+    "question": "At which CSF Tier is cybersecurity risk management part of the organizational culture?",
+    "answer": "Tier 4: Adaptive.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 30, "text": "Cybersecurity risk management is part of the organizational culture."}
+    ]
+  },
+  {
+    "id": "q35",
+    "type": "fact",
+    "question": "At the lowest CSF maturity level, how does an organization carry out its cybersecurity strategy?",
+    "answer": "Tier 1 (Partial): the organizational cybersecurity risk strategy is applied in an ad hoc manner.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 29, "text": "Application of the organizational cybersecurity risk strategy is managed in an ad hoc manner."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q36",
+    "type": "definition",
+    "question": "What is a CSF Community Profile?",
+    "answer": "A published baseline of CSF outcomes addressing shared interests and goals among a number of organizations, typically for a sector, subsector, technology, threat type, or other use case.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 11, "text": "A Community P rofile is a baseline of CSF outcomes that is created and published to address shared interests and goals among a number of organizations."}
+    ]
+  },
+  {
+    "id": "q37",
+    "type": "list",
+    "question": "What are the steps for creating and using a CSF Organizational Profile?",
+    "answer": "1) Scope the Organizational Profile, 2) gather the needed information, 3) create the Profile, 4) analyze gaps between the Current and Target Profiles and create an action plan, 5) implement the action plan and update the Profile.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 12, "text": "1. Scope the Organizational Profile."},
+      {"doc": "nist_csf_2.pdf", "page": 12, "text": "5. Implement the action plan, and update the Organizational Profile."}
+    ]
+  },
+  {
+    "id": "q38",
+    "type": "identifier",
+    "question": "What does CSF subcategory GV.SC-04 state?",
+    "answer": "Suppliers are known and prioritized by criticality.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 22, "text": "GV.SC-04: Suppliers are known and prioritized by criticality"}
+    ]
+  },
+  {
+    "id": "q39",
+    "type": "identifier",
+    "question": "Which CSF subcategory covers maintaining inventories of services provided by suppliers?",
+    "answer": "ID.AM-04.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 23, "text": "ID.AM-04: Inventories of services provided by suppliers are maintained"}
+    ]
+  },
+  {
+    "id": "q40",
+    "type": "fact",
+    "question": "In the CSF wheel diagram, why does one function sit in the middle?",
+    "answer": "GOVERN is at the center because it informs how an organization will implement the other five Functions.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 9, "text": "GOVERN is in the center of the wheel because it informs how an organization will implement the other five Functions."}
+    ],
+    "paraphrased": true
+  },
+  {
+    "id": "q41",
+    "type": "fact",
+    "question": "Which CSF Functions should be ready at all times and act when cybersecurity incidents occur?",
+    "answer": "RESPOND and RECOVER.",
+    "evidence": [
+      {"doc": "nist_csf_2.pdf", "page": 10, "text": "actions that support RESPOND and RECOVER should be ready at all times and happen when cybersecurity incidents occur."}
+    ]
+  },
+  {
+    "id": "q42",
+    "type": "multi-hop",
+    "question": "How many core functions do the AI RMF and CSF 2.0 each have, and which function name do they share?",
+    "answer": "The AI RMF has four (GOVERN, MAP, MEASURE, MANAGE) and CSF 2.0 has six (GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, RECOVER); both have GOVERN.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 8, "text": "These functions – GOVERN , MAP, MEASURE , and MANAGE – are broken down further into categories and subcategories."},
+      {"doc": "nist_csf_2.pdf", "page": 8, "text": "The CSF Core Functions — G OVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER — organize cybersecurity outcomes at their highest level."}
+    ]
+  },
+  {
+    "id": "q43",
+    "type": "fact",
+    "question": "Which NIST frameworks does the AI RMF point to as applicable guidance for AI security and resilience?",
+    "answer": "The NIST Cybersecurity Framework and the NIST Risk Management Framework.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 20, "text": "Guidelines in the NIST Cybersecurity Framework and Risk Management Framework are among those which are applicable here."}
+    ]
+  },
+  {
+    "id": "q44",
+    "type": "unanswerable",
+    "question": "What does CSF 2.0 subcategory ID.AM-06 state?",
+    "answer": "This information is not available.",
+    "evidence": []
+  },
+  {
+    "id": "q45",
+    "type": "unanswerable",
+    "question": "What chunk size does the Generative AI Profile recommend for retrieval-augmented generation systems?",
+    "answer": "This information is not available.",
+    "evidence": []
+  },
+  {
+    "id": "q46",
+    "type": "unanswerable",
+    "question": "For how many years must AI incident records be retained under the AI RMF?",
+    "answer": "This information is not available.",
+    "evidence": []
+  },
+  {
+    "id": "q47",
+    "type": "unanswerable",
+    "question": "What penalties does CSF 2.0 set for organizations that do not reach Tier 3?",
+    "answer": "This information is not available.",
+    "evidence": []
+  },
+  {
+    "id": "q48",
+    "type": "unanswerable",
+    "question": "What minimum encryption key length does CSF 2.0 require for data at rest?",
+    "answer": "This information is not available.",
+    "evidence": []
+  },
+  {
+    "id": "q49",
+    "type": "multi-hop",
+    "question": "The Generative AI Profile is a profile of which NIST framework, and what kind of profile does that framework call it?",
+    "answer": "It is a profile of the AI RMF 1.0, and it is a cross-sectoral profile, which the AI RMF defines as covering risks of models or applications that can be used across use cases or sectors.",
+    "evidence": [
+      {"doc": "nist_ai_600_1.pdf", "page": 5, "text": "As GAI covers risks of models or applications that can be used across use cases or sectors, this document is an AI RMF cross-sectoral proﬁle."},
+      {"doc": "nist_ai_rmf.pdf", "page": 39, "text": "AI RMF cross-sectoral profilescover risks of models or applications that can be used across use cases or sectors."}
+    ]
+  },
+  {
+    "id": "q50",
+    "type": "multi-hop",
+    "question": "Both the AI RMF and CSF 2.0 use Target Profiles. What does a Target Profile describe in each framework?",
+    "answer": "In the AI RMF, a Target Profile indicates the outcomes needed to achieve the desired AI risk management goals; in CSF 2.0, it specifies the desired outcomes an organization has selected and prioritized for its cybersecurity risk management objectives.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 38, "text": "A Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals."},
+      {"doc": "nist_csf_2.pdf", "page": 11, "text": "A Target Profile specifies the desired outcomes that an organization has selected and prioritized for achieving its cybersecurity risk management objectives."}
+    ]
+  },
+  {
+    "id": "q51",
+    "type": "multi-hop",
+    "question": "Which AI RMF trustworthiness characteristic is both the base of the others and one of the characteristics the Generative AI Profile maps confabulation to?",
+    "answer": "Valid and reliable: the AI RMF calls it a necessary condition of trustworthiness and the base for the other characteristics, and the GAI Profile lists it among the characteristics for confabulation.",
+    "evidence": [
+      {"doc": "nist_ai_rmf.pdf", "page": 17, "text": "Valid & Reliable is a necessary condition of trustworthiness and is shown as the base for other trustworthiness characteristics.", "also_on": [{"doc": "nist_ai_rmf.pdf", "page": 5}]},
+      {"doc": "nist_ai_600_1.pdf", "page": 10, "text": "Trustworthy AI Characteristics: Fair with Harmful Bias Managed, Safe, Valid and Reliable, Explainable and Interpretable"}
+    ]
+  }
+]

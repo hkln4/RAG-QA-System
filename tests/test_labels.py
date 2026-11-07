@@ -25,9 +25,17 @@ def test_evidence_locations_include_also_on():
 def test_validate_flags_missing_evidence_and_unlisted_copies():
     pages = {("a.pdf", 1): "alpha beta gamma", ("a.pdf", 2): "beta gamma again"}
     questions = [
-        {"id": "q1", "evidence": [{"doc": "a.pdf", "page": 1, "text": "beta gamma"}]},
-        {"id": "q2", "evidence": [{"doc": "a.pdf", "page": 2, "text": "delta"}]},
+        {"id": "q1", "type": "fact", "evidence": [{"doc": "a.pdf", "page": 1, "text": "beta gamma"}]},
+        {"id": "q2", "type": "fact", "evidence": [{"doc": "a.pdf", "page": 2, "text": "delta"}]},
     ]
     errors, warnings = validate(questions, pages)
     assert errors == ["q2: evidence not found on ('a.pdf', 2): 'delta'"]
     assert len(warnings) == 1 and warnings[0].startswith("q1:")
+
+
+def test_validate_requires_empty_evidence_for_unanswerable():
+    pages = {("a.pdf", 1): "alpha"}
+    ok = {"id": "q1", "type": "unanswerable", "evidence": []}
+    bad = {"id": "q2", "type": "unanswerable", "evidence": [{"doc": "a.pdf", "page": 1, "text": "alpha"}]}
+    assert validate([ok], pages) == ([], [])
+    assert validate([bad], pages)[0] == ["q2: unanswerable question must not have evidence"]
