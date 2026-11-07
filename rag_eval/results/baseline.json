@@ -1,0 +1,4305 @@
+{
+  "config": {
+    "name": "baseline",
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "embedding_model": "models/gemini-embedding-001",
+    "k": 5,
+    "answer_model": "models/gemini-3.1-flash-lite",
+    "temperature": 0.0
+  },
+  "judge_model": "models/gemini-3.1-flash-lite",
+  "timestamp": "2026-11-07T16:42:55+00:00",
+  "n_questions": 51,
+  "n_chunks": 464,
+  "runtime_s": 4,
+  "environment": {
+    "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+    "python": "3.13.1"
+  },
+  "summary": {
+    "retrieval": {
+      "all": {
+        "n": 46,
+        "hit@1": 0.5,
+        "recall@1": 0.4673913043478261,
+        "hit@3": 0.6739130434782609,
+        "recall@3": 0.6521739130434783,
+        "hit@5": 0.8478260869565217,
+        "recall@5": 0.8260869565217391,
+        "hit@10": 0.9347826086956522,
+        "recall@10": 0.9130434782608695,
+        "mrr": 0.626535541752933
+      },
+      "paraphrased": {
+        "n": 14,
+        "hit@1": 0.5714285714285714,
+        "recall@1": 0.5714285714285714,
+        "hit@3": 0.7142857142857143,
+        "recall@3": 0.7142857142857143,
+        "hit@5": 0.8571428571428571,
+        "recall@5": 0.8571428571428571,
+        "hit@10": 0.9285714285714286,
+        "recall@10": 0.9285714285714286,
+        "mrr": 0.6749999999999999
+      },
+      "not_paraphrased": {
+        "n": 32,
+        "hit@1": 0.46875,
+        "recall@1": 0.421875,
+        "hit@3": 0.65625,
+        "recall@3": 0.625,
+        "hit@5": 0.84375,
+        "recall@5": 0.8125,
+        "hit@10": 0.9375,
+        "recall@10": 0.90625,
+        "mrr": 0.6053323412698413
+      },
+      "identifier": {
+        "n": 7,
+        "hit@1": 0.42857142857142855,
+        "recall@1": 0.42857142857142855,
+        "hit@3": 0.5714285714285714,
+        "recall@3": 0.5714285714285714,
+        "hit@5": 0.5714285714285714,
+        "recall@5": 0.5714285714285714,
+        "hit@10": 0.8571428571428571,
+        "recall@10": 0.8571428571428571,
+        "mrr": 0.5063492063492063
+      },
+      "multi_hop": {
+        "n": 4,
+        "hit@1": 0.5,
+        "recall@1": 0.25,
+        "hit@3": 0.5,
+        "recall@3": 0.375,
+        "hit@5": 0.75,
+        "recall@5": 0.5,
+        "hit@10": 1.0,
+        "recall@10": 0.75,
+        "mrr": 0.5982142857142857
+      }
+    },
+    "generation": {
+      "faithfulness": 0.9552845528455284,
+      "faithfulness_n": 41,
+      "answer_relevancy": 0.6673482670895847,
+      "answer_relevancy_n": 46
+    },
+    "refusal": {
+      "unanswerable_refused": 1.0,
+      "answerable_refused": 0.10869565217391304
+    }
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "type": "definition",
+      "paraphrased": false,
+      "answer": "The AI RMF defines an AI system as an engineered or machine-based system that can, for a given set of objectives, generate outputs such as predictions, recommendations, or decisions influencing real or virtual environments, and is designed to operate with varying levels of autonomy.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          6,
+          752,
+          1662
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          6,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          778,
+          1725
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          14,
+          1596,
+          2541
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          1550,
+          2472
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          14,
+          767,
+          1763
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          1538,
+          2467
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          0,
+          977
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2293,
+          3103
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.884229995175046
+      }
+    },
+    {
+      "id": "q02",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "The four functions of the AI RMF Core are GOVERN, MAP, MEASURE, and MANAGE.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          0,
+          921
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          784,
+          1289
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          960
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          754,
+          1706
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          36,
+          816,
+          1738
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          775,
+          1750
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          14,
+          1596,
+          2541
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1601,
+          2533
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          0,
+          972
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.925939613912933
+      }
+    },
+    {
+      "id": "q03",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "The National Artificial Intelligence Initiative Act of 2020 (P.L. 116-283).",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1748
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          2,
+          0,
+          376
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          1,
+          0,
+          76
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          778,
+          1725
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          1,
+          0,
+          245
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2293,
+          3103
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          960
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          0,
+          917
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7226636464351506
+      }
+    },
+    {
+      "id": "q04",
+      "type": "definition",
+      "paraphrased": true,
+      "answer": "Residual risk.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          0,
+          968
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          1595,
+          2564
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1601,
+          2533
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          0,
+          972
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          786,
+          1779
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          9,
+          0,
+          912
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          1685,
+          2643
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          0,
+          978
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          6,
+          752,
+          1662
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.16666666666666666
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7317479722704574
+      }
+    },
+    {
+      "id": "q05",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "No, the AI RMF does not prescribe risk tolerance.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          0,
+          978
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          0,
+          968
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2293,
+          3103
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          6,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          1685,
+          2643
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          0,
+          968
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          960
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1748
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          12,
+          2463,
+          2964
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.797643447440883
+      }
+    },
+    {
+      "id": "q06",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "Development and deployment should cease in a safe manner until risks can be sufficiently managed.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          0,
+          968
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          0,
+          925
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          2264,
+          2565
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          0,
+          987
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          0,
+          968
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          45,
+          1683,
+          2563
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          1611,
+          2542
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          1595,
+          2564
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          0,
+          938
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          784,
+          1289
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6777158097831136
+      }
+    },
+    {
+      "id": "q07",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "Valid & Reliable.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          0,
+          959
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          47,
+          816,
+          1791
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          0,
+          977
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          1532,
+          2479
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          773,
+          1746
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          22,
+          0,
+          935
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          18,
+          1568,
+          2485
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          1577,
+          2514
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          1550,
+          2472
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          1569,
+          2547
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6185158519116628
+      }
+    },
+    {
+      "id": "q08",
+      "type": "definition",
+      "paraphrased": false,
+      "answer": "Transparency answers \u201cwhat happened\u201d in the system, explainability answers \u201chow\u201d a decision was made, and interpretability answers \u201cwhy\u201d a decision was made and its meaning or context to the user.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          22,
+          0,
+          935
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          1538,
+          2454
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          2331,
+          3129
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          2277,
+          2928
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          2364,
+          2648
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          773,
+          1746
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          1577,
+          2514
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          1569,
+          2547
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          18,
+          1568,
+          2485
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          21,
+          0,
+          936
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8068897575407252
+      }
+    },
+    {
+      "id": "q09",
+      "type": "list",
+      "paraphrased": true,
+      "answer": "NIST sorts the sources of AI bias into three major categories: systemic, computational and statistical, and human-cognitive.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          746,
+          1678
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          1625,
+          2580
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          45,
+          1612,
+          2608
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          1653,
+          2621
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          782,
+          1732
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          43,
+          809,
+          1728
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1825
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          8,
+          3229,
+          3544
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8434225712445679
+      }
+    },
+    {
+      "id": "q10",
+      "type": "definition",
+      "paraphrased": true,
+      "answer": "Resilience is the ability to return to normal function after an unexpected adverse event, while security includes resilience but also encompasses protocols to avoid, protect against, respond to, or recover from attacks.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          800,
+          1762
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          0,
+          987
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          1577,
+          2514
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          775,
+          1750
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          1597,
+          1956
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          0,
+          977
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          22,
+          0,
+          935
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          960
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          777,
+          1755
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2293,
+          3103
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7001032223572464
+      }
+    },
+    {
+      "id": "q11",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "Processes and procedures are in place for decommissioning and phasing out AI systems safely and in a manner that does not increase risks or decrease the organization\u2019s trustworthiness.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          808,
+          1807
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          0,
+          978
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          0,
+          962
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          1611,
+          2439
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          766,
+          1708
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          0,
+          925
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          20,
+          0,
+          938
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          1515,
+          2309
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          29,
+          0,
+          1000
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          29,
+          806,
+          1725
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6785719157779825
+      }
+    },
+    {
+      "id": "q12",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "MEASURE 2.12 covers the assessment and documentation of the environmental impact and sustainability of AI model training and management activities.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          35,
+          848,
+          1813
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          35,
+          0,
+          990
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          0,
+          932
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          33,
+          803,
+          1787
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          33,
+          1612,
+          2590
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          33,
+          0,
+          979
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          39,
+          848,
+          1808
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          34,
+          1557,
+          2103
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          34,
+          791,
+          1751
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7812276119782618
+      }
+    },
+    {
+      "id": "q13",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "Mitigating, transferring, avoiding, or accepting.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          44,
+          0,
+          990
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          0,
+          968
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          0,
+          968
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          2436,
+          2948
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          811,
+          1776
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          835,
+          1812
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          0,
+          938
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          786,
+          1779
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          779,
+          1740
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          48,
+          771,
+          1763
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.675208281702012
+      }
+    },
+    {
+      "id": "q14",
+      "type": "definition",
+      "paraphrased": false,
+      "answer": "Negative residual risks are defined as the sum of all unmitigated risks.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          811,
+          1776
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          0,
+          968
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          9,
+          731,
+          1689
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          2418,
+          3024
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          37,
+          1594,
+          2265
+        ],
+        [
+          "nist_csf_2.pdf",
+          21,
+          1692,
+          2294
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          786,
+          1779
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          36,
+          1567,
+          2393
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          44,
+          0,
+          990
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          0,
+          972
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8595320688758226
+      }
+    },
+    {
+      "id": "q15",
+      "type": "definition",
+      "paraphrased": false,
+      "answer": "An AI RMF Current Profile indicates how AI is currently being managed and the related risks in terms of current outcomes, while a Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1601,
+          2533
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          770,
+          1747
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          802,
+          1718
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1568,
+          2488
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1581,
+          1997
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          3156
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          0,
+          917
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          2214,
+          3154
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          775,
+          1750
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.914303331711721
+      }
+    },
+    {
+      "id": "q16",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "Most users of the AI RMF would start with the MAP function.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          754,
+          1706
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          808,
+          1807
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          766,
+          1708
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          27,
+          0,
+          978
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          26,
+          1507,
+          2436
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          2363,
+          2765
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          30,
+          1611,
+          2542
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          23,
+          804,
+          1782
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          808,
+          1800
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          28,
+          1515,
+          2309
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7088014536860987
+      }
+    },
+    {
+      "id": "q17",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "Some commenters object to these terms because they anthropomorphize GAI, which is a risk as it can inappropriately attribute human characteristics to non-human entities.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          0,
+          950
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          8,
+          2351,
+          3336
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          2285,
+          2960
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          842,
+          1745
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          1586,
+          2579
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          8,
+          1487,
+          2456
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          866,
+          1803
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2442,
+          3250
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1825
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          0,
+          970
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7950837043395524
+      }
+    },
+    {
+      "id": "q18",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "The risk is exacerbated for GAI due to the scale of the training data, which may be too large for humans to vet; the difficulty of training foundation models, which leads to extensive reuse of limited numbers of models; and the extent to which GAI may be integrated into other devices and services.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          9,
+          746,
+          1684
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          0,
+          949
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          0,
+          963
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1825
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1607,
+          2595
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          1663,
+          2661
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          2474,
+          2876
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          43,
+          1573,
+          2517
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          51,
+          1542,
+          2478
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          9,
+          0,
+          924
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7533275553488364
+      }
+    },
+    {
+      "id": "q19",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "Training a single transformer LLM can emit as much carbon as 300 round-trip flights between San Francisco and New York.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          0,
+          913
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          12,
+          819,
+          1754
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2394,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          825,
+          1806
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          782,
+          1379
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          1679,
+          2653
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1810
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          1604,
+          2582
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          8,
+          749,
+          1677
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1669,
+          2581
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.77354881111039
+      }
+    },
+    {
+      "id": "q20",
+      "type": "definition",
+      "paraphrased": true,
+      "answer": "Model collapse can occur, which can lead to homogenized outputs and the disappearance of data points from the distribution of the new model\u2019s outputs.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          2486,
+          3323
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          43,
+          809,
+          1728
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          0,
+          993
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          0,
+          950
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          11,
+          1685,
+          2655
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          2515,
+          2772
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1825
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          0,
+          967
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          842,
+          1745
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          2410,
+          3039
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6921320370230771
+      }
+    },
+    {
+      "id": "q21",
+      "type": "definition",
+      "paraphrased": true,
+      "answer": "Automation bias.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          746,
+          1678
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          866,
+          1803
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          13,
+          1663,
+          2561
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          48,
+          0,
+          88
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          959
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          46,
+          0,
+          967
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          45,
+          0,
+          942
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          1569,
+          2547
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          0,
+          917
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7920336746716207
+      }
+    },
+    {
+      "id": "q22",
+      "type": "definition",
+      "paraphrased": false,
+      "answer": "Direct prompt injection involves attackers crafting malicious prompts and inputting them directly into a GAI system. Indirect prompt injection occurs when adversaries remotely exploit LLM-integrated applications by injecting prompts into data likely to be retrieved, without using a direct interface.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          0,
+          963
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          1485,
+          2466
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          37,
+          2448,
+          2868
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          58,
+          868,
+          1849
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          63,
+          2447,
+          2744
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          1645,
+          2614
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          53,
+          2380,
+          3137
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          11,
+          0,
+          917
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          8,
+          0,
+          939
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          1525,
+          2305
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.9234405884901774
+      }
+    },
+    {
+      "id": "q23",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "A synthetic image of a Pentagon blast.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          807,
+          1789
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          15,
+          2486,
+          3323
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          14,
+          0,
+          970
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          11,
+          0,
+          917
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2394,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          1604,
+          2582
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          0,
+          953
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          805,
+          1771
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          59,
+          751,
+          1667
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          63,
+          851,
+          1817
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7545313689172469
+      }
+    },
+    {
+      "id": "q24",
+      "type": "definition",
+      "paraphrased": true,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          61,
+          0,
+          917
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1748
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          1525,
+          2305
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          868,
+          1830
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          959
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          23,
+          746,
+          1678
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          48,
+          0,
+          88
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          45,
+          2448,
+          2703
+        ],
+        [
+          "nist_csf_2.pdf",
+          18,
+          798,
+          1775
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 0.0,
+        "recall@10": 0.0,
+        "mrr": 0.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "q25",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "Executive Order 14110.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2394,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          941
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1669,
+          2581
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          959
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          1,
+          0,
+          245
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1810
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          0,
+          971
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          1679,
+          2653
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7655826138282379
+      }
+    },
+    {
+      "id": "q26",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "At least tens of billions of parameters.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2394,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1669,
+          2581
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          941
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1810
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          62,
+          1679,
+          2653
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          3,
+          0,
+          959
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          1,
+          0,
+          245
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          9,
+          0,
+          924
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          840,
+          1779
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7198934292059898
+      }
+    },
+    {
+      "id": "q27",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          1649,
+          2607
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          19,
+          0,
+          938
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          808,
+          1800
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          23,
+          804,
+          1782
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          22,
+          824,
+          1820
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          20,
+          0,
+          938
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          24,
+          776,
+          1742
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          2501,
+          2724
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1704,
+          2697
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          0,
+          925
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 0.0,
+        "recall@10": 0.0,
+        "mrr": 0.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "q28",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "System ID, Title, Reporter, System/Source, Data Reported, and Date of Incident.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          23,
+          1624,
+          1854
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          2501,
+          2724
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          50,
+          0,
+          377
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          1678,
+          2298
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          23,
+          804,
+          1782
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          835,
+          1812
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          21,
+          1482,
+          2447
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          57,
+          0,
+          899
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          26,
+          0,
+          925
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          18,
+          1649,
+          2607
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6922783949194914
+      }
+    },
+    {
+      "id": "q29",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          782,
+          1379
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          34,
+          791,
+          1744
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          35,
+          847,
+          1814
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          1613,
+          2560
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          38,
+          801,
+          1379
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          34,
+          1548,
+          2135
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          36,
+          758,
+          1733
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          39,
+          1640,
+          2239
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          40,
+          840,
+          1779
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          41,
+          0,
+          932
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.1
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "q30",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "GV-6.1-006",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          0,
+          996
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          24,
+          1544,
+          2274
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          806,
+          1781
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          1708,
+          2665
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1704,
+          2697
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          830,
+          1808
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          880,
+          1873
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          24,
+          776,
+          1742
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1607,
+          2595
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          26,
+          773,
+          1729
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5963953365789956
+      }
+    },
+    {
+      "id": "q31",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "The Generative AI Profile mentions the following standard risk controls for third-party transparency: acquisition and procurement due diligence, requests for software bills of materials (SBOMs), application of service level agreements (SLAs), and statement on standards for attestation engagement (SSAE) reports.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          806,
+          1781
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          1708,
+          2665
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          0,
+          996
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          24,
+          1544,
+          2274
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          1704,
+          2697
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          47,
+          0,
+          968
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          830,
+          1808
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          26,
+          0,
+          925
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1607,
+          2595
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          25,
+          880,
+          1873
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.5
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8720827782873822
+      }
+    },
+    {
+      "id": "q32",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "Because anecdotal testing through standardized tests designed for humans does not guarantee a GAI system's validity or reliability in those domains.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          53,
+          832,
+          1777
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          52,
+          2474,
+          2876
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          0,
+          950
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          53,
+          0,
+          975
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          63,
+          1656,
+          2609
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          28,
+          1562,
+          2061
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          789,
+          1711
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          34,
+          1548,
+          2135
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1825
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          18,
+          2310,
+          2992
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.25
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7582984796324667
+      }
+    },
+    {
+      "id": "q33",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "The six Functions of the NIST CSF 2.0 Core are GOVERN, IDENTIFY, PROTECT, DETECT, RESPOND, and RECOVER.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          777,
+          1755
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          876,
+          1837
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1562,
+          2554
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          0,
+          999
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          0,
+          933
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          0,
+          975
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1723
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          0,
+          970
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8437761681377101
+      }
+    },
+    {
+      "id": "q34",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "Tier 4 (Adaptive).",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          3156
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          1649,
+          2645
+        ],
+        [
+          "nist_csf_2.pdf",
+          30,
+          794,
+          1788
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1620,
+          2329
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          0,
+          949
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          840,
+          1822
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          846,
+          1788
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2368,
+          2788
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          0,
+          993
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          1575,
+          2161
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.3333333333333333
+      },
+      "ragas": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.6286242367736413
+      }
+    },
+    {
+      "id": "q35",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "In an ad hoc manner.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          5,
+          3148,
+          3406
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2368,
+          2788
+        ],
+        [
+          "nist_csf_2.pdf",
+          14,
+          1515,
+          2436
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          840,
+          1822
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          0,
+          993
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          3156
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          1481,
+          2404
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          2214,
+          3154
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          798,
+          1752
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1568,
+          2488
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "q36",
+      "type": "definition",
+      "paraphrased": false,
+      "answer": "A Community Profile is a baseline of CSF outcomes that is created and published to address shared interests and goals among a number of organizations.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          11,
+          770,
+          1747
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1581,
+          1997
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          802,
+          1718
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          762,
+          1639
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          0,
+          932
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          769,
+          1108
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          846,
+          1788
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1620,
+          2329
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          1523,
+          2350
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8188238024499782
+      }
+    },
+    {
+      "id": "q37",
+      "type": "list",
+      "paraphrased": false,
+      "answer": "1. Scope the Organizational Profile.\n2. Gather the information needed to prepare the Organizational Profile.\n3. Create the Organizational Profile.\n4. Analyze the gaps between the Current and Target Profiles, and create an action plan.\n5. Implement the action plan, and update the Organizational Profile.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          12,
+          802,
+          1718
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1581,
+          1997
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1568,
+          2488
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          0,
+          930
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          762,
+          1639
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          770,
+          1747
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          0,
+          917
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2368,
+          2788
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          1513,
+          2016
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 0.5,
+        "hit@3": 1.0,
+        "recall@3": 0.5,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7928847734033132
+      }
+    },
+    {
+      "id": "q38",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "Suppliers are known and prioritized by criticality.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          22,
+          2389,
+          2616
+        ],
+        [
+          "nist_csf_2.pdf",
+          18,
+          1616,
+          2522
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          0,
+          992
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          1555,
+          2552
+        ],
+        [
+          "nist_csf_2.pdf",
+          21,
+          827,
+          1813
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          863,
+          1811
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          764,
+          1730
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          799,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          0,
+          929
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6350558835498136
+      }
+    },
+    {
+      "id": "q39",
+      "type": "identifier",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          18,
+          1616,
+          2522
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          799,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          0,
+          992
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          863,
+          1811
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1723
+        ],
+        [
+          "nist_csf_2.pdf",
+          22,
+          2389,
+          2616
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          14,
+          736,
+          1696
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          1625,
+          2476
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          3156
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.1111111111111111
+      },
+      "ragas": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0
+      }
+    },
+    {
+      "id": "q40",
+      "type": "fact",
+      "paraphrased": true,
+      "answer": "GOVERN is in the center of the wheel because it informs how an organization will implement the other five Functions.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          9,
+          1562,
+          2554
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          1575,
+          2161
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2368,
+          2788
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          1523,
+          2350
+        ],
+        [
+          "nist_csf_2.pdf",
+          4,
+          762,
+          1639
+        ],
+        [
+          "nist_csf_2.pdf",
+          15,
+          798,
+          1752
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          799,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          16,
+          1481,
+          2404
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 1.0,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.7809712734491204
+      }
+    },
+    {
+      "id": "q41",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "RESPOND and RECOVER.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          9,
+          1562,
+          2554
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          777,
+          1755
+        ],
+        [
+          "nist_csf_2.pdf",
+          27,
+          0,
+          967
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          0,
+          975
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          27,
+          847,
+          1804
+        ],
+        [
+          "nist_csf_2.pdf",
+          27,
+          1618,
+          2109
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1723
+        ],
+        [
+          "nist_csf_2.pdf",
+          26,
+          853,
+          1820
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.2
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.6461763864417205
+      }
+    },
+    {
+      "id": "q42",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "answer": "The AI RMF has four core functions, and CSF 2.0 has six core functions. They share the function name \"Govern.\"",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          784,
+          1289
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          960
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          0,
+          921
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          0,
+          970
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          799,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1723
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          1523,
+          2350
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 1.0,
+        "recall@5": 0.5,
+        "hit@10": 1.0,
+        "recall@10": 0.5,
+        "mrr": 0.25
+      },
+      "ragas": {
+        "faithfulness": 0.6666666666666666,
+        "answer_relevancy": 0.9027342746893842
+      }
+    },
+    {
+      "id": "q43",
+      "type": "fact",
+      "paraphrased": false,
+      "answer": "The NIST Cybersecurity Framework, the NIST Privacy Framework, the NIST Risk Management Framework, and the Secure Software Development Framework.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          44,
+          757,
+          1734
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          774,
+          1748
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          0,
+          960
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          13,
+          2377,
+          3131
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          8,
+          1574,
+          1874
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          20,
+          0,
+          987
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          7,
+          2293,
+          3103
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_csf_2.pdf",
+          19,
+          767,
+          1107
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          1,
+          0,
+          76
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 0.0,
+        "recall@10": 0.0,
+        "mrr": 0.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.744364816865888
+      }
+    },
+    {
+      "id": "q44",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          23,
+          1625,
+          2476
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          807,
+          1723
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          24,
+          0,
+          934
+        ],
+        [
+          "nist_csf_2.pdf",
+          23,
+          863,
+          1811
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          799,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          8,
+          1648,
+          2106
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1562,
+          2554
+        ],
+        [
+          "nist_csf_2.pdf",
+          14,
+          736,
+          1696
+        ]
+      ]
+    },
+    {
+      "id": "q45",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2394,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          47,
+          773,
+          1691
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          47,
+          1502,
+          2472
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          35,
+          847,
+          1814
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          51,
+          2345,
+          2985
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1810
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          31,
+          830,
+          1823
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          45,
+          0,
+          975
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          46,
+          1607,
+          2595
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          48,
+          0,
+          914
+        ]
+      ]
+    },
+    {
+      "id": "q46",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          775,
+          1750
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          57,
+          800,
+          1440
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          1678,
+          2298
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          25,
+          784,
+          1289
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          56,
+          1626,
+          2594
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          0,
+          972
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          49,
+          835,
+          1812
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          50,
+          0,
+          377
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          20,
+          0,
+          938
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          57,
+          0,
+          899
+        ]
+      ]
+    },
+    {
+      "id": "q47",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          3156
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          769,
+          1108
+        ],
+        [
+          "nist_csf_2.pdf",
+          13,
+          0,
+          949
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          846,
+          1788
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1620,
+          2329
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          0,
+          993
+        ],
+        [
+          "nist_csf_2.pdf",
+          29,
+          1649,
+          2645
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1568,
+          2488
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2368,
+          2788
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          0,
+          964
+        ]
+      ]
+    },
+    {
+      "id": "q48",
+      "type": "unanswerable",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_csf_2.pdf",
+          5,
+          3148,
+          3406
+        ],
+        [
+          "nist_csf_2.pdf",
+          20,
+          786,
+          1781
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          2335,
+          3326
+        ],
+        [
+          "nist_csf_2.pdf",
+          10,
+          799,
+          1432
+        ],
+        [
+          "nist_csf_2.pdf",
+          5,
+          812,
+          1734
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          748,
+          1721
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          2368,
+          2788
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1620,
+          2329
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          795,
+          1772
+        ],
+        [
+          "nist_csf_2.pdf",
+          9,
+          1562,
+          2554
+        ]
+      ]
+    },
+    {
+      "id": "q49",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "answer": "The Generative AI Profile is a profile of the AI Risk Management Framework (AI RMF 1.0), and the framework calls it a cross-sectoral profile.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          2394,
+          2747
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          1,
+          0,
+          245
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          2,
+          0,
+          470
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          941
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          1669,
+          2581
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          843,
+          1810
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          39,
+          0,
+          468
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          6,
+          0,
+          971
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1601,
+          2533
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 0.0,
+        "recall@1": 0.0,
+        "hit@3": 0.0,
+        "recall@3": 0.0,
+        "hit@5": 0.0,
+        "recall@5": 0.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.14285714285714285
+      },
+      "ragas": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.8002127298219325
+      }
+    },
+    {
+      "id": "q50",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "answer": "In the AI RMF, a Target Profile indicates the outcomes needed to achieve the desired or target AI risk management goals. In the CSF 2.0, a Target Profile specifies the desired outcomes that an organization has selected and prioritized for achieving its cybersecurity risk management objectives.",
+      "refused": false,
+      "retrieved": [
+        [
+          "nist_ai_rmf.pdf",
+          38,
+          1601,
+          2533
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          770,
+          1747
+        ],
+        [
+          "nist_csf_2.pdf",
+          31,
+          1620,
+          2329
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          1568,
+          2488
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          802,
+          1718
+        ],
+        [
+          "nist_csf_2.pdf",
+          11,
+          1581,
+          1997
+        ],
+        [
+          "nist_csf_2.pdf",
+          12,
+          2336,
+          3156
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          60,
+          2388,
+          2880
+        ],
+        [
+          "nist_csf_2.pdf",
+          7,
+          1523,
+          2350
+        ],
+        [
+          "nist_csf_2.pdf",
+          6,
+          846,
+          1788
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 0.5,
+        "hit@3": 1.0,
+        "recall@3": 1.0,
+        "hit@5": 1.0,
+        "recall@5": 1.0,
+        "hit@10": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8892506163812456
+      }
+    },
+    {
+      "id": "q51",
+      "type": "multi-hop",
+      "paraphrased": false,
+      "answer": "This information is not available.",
+      "refused": true,
+      "retrieved": [
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          1586,
+          2579
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          17,
+          0,
+          959
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          0,
+          950
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          1636,
+          2599
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          19,
+          0,
+          977
+        ],
+        [
+          "nist_ai_rmf.pdf",
+          22,
+          0,
+          935
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          7,
+          2582,
+          3570
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          10,
+          2442,
+          3250
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          16,
+          849,
+          1825
+        ],
+        [
+          "nist_ai_600_1.pdf",
+          5,
+          0,
+          941
+        ]
+      ],
+      "retrieval": {
+        "hit@1": 1.0,
+        "recall@1": 0.5,
+        "hit@3": 1.0,
+        "recall@3": 0.5,
+        "hit@5": 1.0,
+        "recall@5": 0.5,
+        "hit@10": 1.0,
+        "recall@10": 0.5,
+        "mrr": 1.0
+      },
+      "ragas": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0
+      }
+    }
+  ]
+}
