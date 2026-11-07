@@ -5,7 +5,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
@@ -80,20 +79,17 @@ def create_qa_chain(vector_store, k: int = 7):
     Answer:
     """)
 
-    def format_docs(docs):
-        return "\n\n".join(doc.page_content for doc in docs)
-
-    chain = (
-        {"context": retriever | format_docs, "question": RunnablePassthrough()}
-        | prompt
-        | llm
-        | StrOutputParser()
-    )
+    # retrieval is not part of the chain: ask_question retrieves once and feeds the
+    # same documents to the LLM and to the caller
+    chain = prompt | llm | StrOutputParser()
 
     return chain, retriever
 
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
 def ask_question(chain, retriever, question):
-    answer = chain.invoke(question)
     sources = retriever.invoke(question)
+    answer = chain.invoke({"context": format_docs(sources), "question": question})
 
     return answer, sources
