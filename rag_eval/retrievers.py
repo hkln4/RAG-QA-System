@@ -20,16 +20,16 @@ class LocalEmbeddings(Embeddings):
     def __init__(self, model_name):
         from sentence_transformers import SentenceTransformer
 
-        self.model_name = model_name
-        self.model = SentenceTransformer(model_name)
+        self.model = model_name  # a string: RAGAS reads it as the embedding model's name
+        self._encoder = SentenceTransformer(model_name)
         self.query_prefix = BGE_QUERY_PREFIX if "bge-" in model_name else ""
 
     def embed_documents(self, texts):
         # normalized, so FAISS's L2 distance ranks exactly like cosine similarity
-        return self.model.encode(texts, batch_size=32, normalize_embeddings=True).tolist()
+        return self._encoder.encode(texts, batch_size=32, normalize_embeddings=True).tolist()
 
     def embed_query(self, text):
-        return self.model.encode(self.query_prefix + text, normalize_embeddings=True).tolist()
+        return self._encoder.encode(self.query_prefix + text, normalize_embeddings=True).tolist()
 
 
 def bm25_tokenize(text):

@@ -22,8 +22,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 warnings.filterwarnings("ignore")  # ragas and the legacy google SDK emit deprecation noise on import
+# RAGAS sends usage analytics by default; evaluation data should stay local
+os.environ.setdefault("RAGAS_DO_NOT_TRACK", "true")
 
 from langchain_community.vectorstores import FAISS
+from langchain_core.callbacks import BaseCallbackHandler
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
@@ -42,10 +45,17 @@ from rag_pipeline import (
     split_documents,
 )
 
-# The free tier allows gemini-3.5-flash only 20 requests a day, far below the
-# ~230 judge calls per configuration, so the judge is the answer model itself.
-# It grades its own answers; README lists this as a limitation.
-JUDGE_MODEL = ANSWER_MODEL
+# A different vendor from the answer model, so the judge does not grade its own
+# answers (the earlier flash-lite self-judge scored a correct answer 0). Haiku 5.5
+# is the cheapest Claude model: ~$0.03 of judge calls per configuration (measured
+# with the free token-counting endpoint). Thinking is off: it would bill extra
+# output tokens and a RAGAS judge only fills in short JSON.
+JUDGE_MODEL = "claude-haiku-5-5"
+JUDGE_PRICE_PER_MTOK = (0.10, 0.50)  # input, output; prompts under 100k tokens
+# The Gemini embedding free tier (1000 requests a day) is also spent by answer
+# relevancy, so its question-similarity embeddings are computed locally instead.
+RELEVANCY_EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
+JUDGE_BUDGET_USD = float(os.getenv("JUDGE_BUDGET_USD", "0.30"))  # total across runs
 KS = (1, 3, 5, 10)
 CANDIDATES = 20  # per-list depth for hybrid fusion and the reranker's candidate pool
 REFUSAL = "this information is not available"
@@ -97,19 +107,54 @@ def make_embeddings(model):
     return LocalEmbeddings(model)
 
 
-def make_judge():
+class BudgetExceeded(RuntimeError):
+    pass
+
+
+class JudgeSpend(BaseCallbackHandler):
+    """Adds up the judge's billed tokens from each response and keeps the running
+    total in the cache, so the budget holds across runs, not just within one."""
+
+    KEY = Cache.key("spend", JUDGE_MODEL)
+
+    def __init__(self, cache):
+        self.cache = cache
+        self.total = cache.get(self.KEY) or {"input_tokens": 0, "output_tokens": 0, "usd": 0.0}
+
+    def on_llm_end(self, response, **kwargs):
+        for generations in response.generations:
+            for g in generations:
+                usage = getattr(getattr(g, "message", None), "usage_metadata", None) or {}
+                self.total["input_tokens"] += usage.get("input_tokens", 0)
+                self.total["output_tokens"] += usage.get("output_tokens", 0)
+        price_in, price_out = JUDGE_PRICE_PER_MTOK
+        self.total["usd"] = (self.total["input_tokens"] * price_in + self.total["output_tokens"] * price_out) / 1e6
+        self.cache.set(self.KEY, self.total)
+
+    def check(self):
+        # checked before each question rather than raised mid-call: RAGAS retries
+        # failed calls, so an exception inside one would be retried and cost more
+        if self.total["usd"] >= JUDGE_BUDGET_USD:
+            raise BudgetExceeded(f"judge spend ${self.total['usd']:.4f} reached the ${JUDGE_BUDGET_USD:.2f} budget")
+
+
+def make_judge(spend):
+    from langchain_anthropic import ChatAnthropic
     from ragas.embeddings.base import LangchainEmbeddingsWrapper
     from ragas.llms.base import LangchainLLMWrapper
 
-    llm = ChatGoogleGenerativeAI(model=JUDGE_MODEL, google_api_key=GOOGLE_API_KEY, temperature=0)
-    # bypass_n: answer_relevancy asks for 3 completions in one call, which this
-    # model rejects ("Multiple candidates is not enabled"); this makes 3 calls instead
-    return (LangchainLLMWrapper(llm, bypass_n=True),
-            LangchainEmbeddingsWrapper(GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL, google_api_key=GOOGLE_API_KEY)))
+    llm = ChatAnthropic(model=JUDGE_MODEL, max_tokens=4096, thinking={"type": "disabled"},
+                        max_retries=4, callbacks=[spend])
+    # bypass_n: answer_relevancy asks for 3 completions at once; one call each is
+    # supported by every provider and keeps the judge comparable across them.
+    # bypass_temperature: RAGAS sets temperature on each call, which Haiku 5.5
+    # rejects with a 400 ("temperature is deprecated for this model").
+    return (LangchainLLMWrapper(llm, bypass_n=True, bypass_temperature=True),
+            LangchainEmbeddingsWrapper(LocalEmbeddings(RELEVANCY_EMBEDDING_MODEL)))
 
 
 def ragas_scores(question, answer, contexts, judge, cache):
-    key = Cache.key("ragas", JUDGE_MODEL, EMBEDDING_MODEL, question, answer, contexts)
+    key = Cache.key("ragas", JUDGE_MODEL, RELEVANCY_EMBEDDING_MODEL, question, answer, contexts)
     cached = cache.get(key)
     if cached is not None:
         return cached
@@ -261,7 +306,8 @@ def run(cfg, retrieval_only=False):
                  | ChatGoogleGenerativeAI(model=cfg.answer_model, google_api_key=GOOGLE_API_KEY,
                                           temperature=cfg.temperature, max_retries=0)
                  | StrOutputParser())
-        judge = make_judge()
+        spend = JudgeSpend(cache)
+        judge = make_judge(spend)
 
     rows = []
     for i, (q, qvec) in enumerate(zip(questions, query_vectors), 1):
@@ -280,6 +326,7 @@ def run(cfg, retrieval_only=False):
                 cache.set(key, answer)
             row["answer"], row["refused"] = answer, REFUSAL in answer.lower()
             if q["type"] != "unanswerable":
+                spend.check()
                 row["ragas"] = ragas_scores(q["question"], answer, [d.page_content for d in context_docs], judge, cache)
             print(f"[{i}/{len(questions)}] {q['id']} {json.dumps(row.get('retrieval', {}).get('hit@5'))} "
                   f"{json.dumps(row.get('ragas'))} refused={row['refused']}", flush=True)
@@ -289,6 +336,8 @@ def run(cfg, retrieval_only=False):
         "config": asdict(cfg),
         "retrieval_only": retrieval_only,
         "judge_model": None if retrieval_only else JUDGE_MODEL,
+        "relevancy_embedding_model": None if retrieval_only else RELEVANCY_EMBEDDING_MODEL,
+        "judge_spend_total": None if retrieval_only else spend.total,
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "n_questions": len(questions),
         "n_chunks": len(chunks),
