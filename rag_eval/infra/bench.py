@@ -26,6 +26,7 @@ M_VALUES = (16, 32)
 EF_CONSTRUCTION = 100  # same for all three; their defaults differ (FAISS 40, pgvector 64, Qdrant 100)
 EF_SEARCH = (10, 20, 40, 80, 160)
 WARMUP = 50
+REPEATS = 3  # latency only; a single pass gave non-monotonic Qdrant timings across ef_search
 PINGS = 500
 RESULTS = Path(__file__).parents[1] / "results"
 
@@ -38,14 +39,22 @@ def ground_truth(corpus, queries, k=K):
 
 
 def timed_searches(fn, queries):
+    """Ids from the first pass (searches are deterministic) and latency over REPEATS passes:
+    the median of the per-pass p50/p95, plus the p50 range to show run-to-run spread."""
     for q in queries[:WARMUP]:
         fn(q)
-    ids, ms = [], []
-    for q in queries:
-        start = time.perf_counter()
-        ids.append(fn(q))
-        ms.append((time.perf_counter() - start) * 1000)
-    return ids, {"p50_ms": round(float(np.percentile(ms, 50)), 3), "p95_ms": round(float(np.percentile(ms, 95)), 3)}
+    ids, p50s, p95s = None, [], []
+    for _ in range(REPEATS):
+        pass_ids, ms = [], []
+        for q in queries:
+            start = time.perf_counter()
+            pass_ids.append(fn(q))
+            ms.append((time.perf_counter() - start) * 1000)
+        ids = ids or pass_ids
+        p50s.append(float(np.percentile(ms, 50)))
+        p95s.append(float(np.percentile(ms, 95)))
+    return ids, {"p50_ms": round(float(np.median(p50s)), 3), "p95_ms": round(float(np.median(p95s)), 3),
+                 "p50_range_ms": [round(min(p50s), 3), round(max(p50s), 3)]}
 
 
 def recall(ids, truth):
@@ -108,6 +117,7 @@ def versions(stores):
 
 
 def to_markdown(r):
+    lat = lambda x: f"{x['p50_ms']:.2f} ({x['p50_range_ms'][0]:.2f}–{x['p50_range_ms'][1]:.2f})"
     lines = [
         "# Vector-DB benchmark",
         "",
@@ -116,26 +126,27 @@ def to_markdown(r):
         f"{THREADS} threads each. {r['platform']}; versions: "
         + ", ".join(f"{k} {v}" for k, v in r["versions"].items()) + ".",
         "",
+        f"Latency: median of {REPEATS} passes over all queries, with the range of the per-pass p50. "
         "Recall is against numpy brute force. FAISS runs in the benchmark process; pgvector and Qdrant run in "
         "Docker containers (4 CPUs, 4 GB) and are reached over localhost, so their latencies include the "
         "round trip shown in the connection row.",
         "",
         "## Exact search",
         "",
-        "| Store | Identical top-10 sets | Differ only by ties | recall@10 | p50 ms | p95 ms |",
+        "| Store | Identical top-10 sets | Differ only by ties | recall@10 | p50 ms (range) | p95 ms |",
         "|---|---|---|---|---|---|",
     ]
     for s in r["stores"]:
         e = s["exact"]
         lines.append(f"| {s['store']} | {e['identical_top10_sets']}/{e['n']} | {e['differ_only_by_ties']} | "
-                     f"{e['recall@10']:.4f} | {e['p50_ms']:.2f} | {e['p95_ms']:.2f} |")
+                     f"{e['recall@10']:.4f} | {lat(e)} | {e['p95_ms']:.2f} |")
     lines += ["", "## HNSW: recall@10 and latency", "",
-              "| Store | M | ef_search | recall@10 | p50 ms | p95 ms |", "|---|---|---|---|---|---|"]
+              "| Store | M | ef_search | recall@10 | p50 ms (range) | p95 ms |", "|---|---|---|---|---|---|"]
     for s in r["stores"]:
         for b in s["builds"]:
             for a in b["ann"]:
                 lines.append(f"| {s['store']} | {b['m']} | {a['ef_search']} | {a['recall@10']:.4f} | "
-                             f"{a['p50_ms']:.2f} | {a['p95_ms']:.2f} |")
+                             f"{lat(a)} | {a['p95_ms']:.2f} |")
     lines += ["", "## Build, memory and connection cost", "",
               "| Store | M | Load s | Index build s | Memory | Connection p50 / p95 ms |", "|---|---|---|---|---|---|"]
     for s in r["stores"]:
